@@ -206,3 +206,14 @@ function hideCreateModal() {
     );
     createModal.hide();
 }
+
+// Add event listener to the close button in the security code modal
+// const input = document.getElementById("subdomain-input");
+// input.addEventListener("input", () => {
+//     input.value = input.value.toLowerCase();
+// });
+
+function handleSearchInput(event) {
+    event.target.value = event.target.value.toLowerCase();
+    console.log(event.target.value);
+}
