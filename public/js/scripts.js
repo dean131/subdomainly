@@ -1,6 +1,6 @@
 // Global variable to store the Turnstile token
-let turnstileToken = "";
-let modalTogle = false;
+let TURNSTILE_TOKEN = "";
+let MODAL_TOGLE = false;
 
 // Function to initialize Turnstile when the window loads
 window.onloadTurnstileCallback = function () {
@@ -12,18 +12,25 @@ window.onloadTurnstileCallback = function () {
 
 // Callback function triggered when Turnstile validation is successful
 function onTurnstileSuccess(token) {
-    turnstileToken = token;
+    TURNSTILE_TOKEN = token;
     document.getElementById("btn-search").disabled = false;
 }
 
 // Function to fetch subdomain search results from the server
 async function searchSubdomain() {
     const subdomain = document.getElementById("subdomain-input").value;
+
+    // Clear the previous search error message
+    const searchError = document.getElementById("searchError");
+    searchError.innerHTML = "";
+
+    // Clear the previous search results
     const resultList = document.getElementById("result-list");
     resultList.innerHTML = "";
 
+    // Check if the subdomain input is empty
     if (!subdomain) {
-        resultList.innerHTML = "<p>Please enter a subdomain to search.</p>";
+        searchError.innerHTML = "<p>Please enter a subdomain to search.</p>";
         return;
     }
 
@@ -50,19 +57,30 @@ async function fetchSubdomainData(subdomain) {
         },
         body: JSON.stringify({
             name: subdomain,
-            turnstile: turnstileToken,
+            turnstile: TURNSTILE_TOKEN,
         }),
     });
 }
 
-// Function to create an individual list item for each subdomain
 function createSubdomainListItem(item) {
     const listItem = document.createElement("a");
-    listItem.href = "#";
     listItem.className = "list-group-item list-group-item-action";
-    listItem.innerHTML = /*html*/ `
-        <div class="d-flex w-100 align-items-center justify-content-between">
-            <h5><strong>${item.subdomain}</strong>.${item.domain}</h5>
+
+    let buttonHtml;
+    let subdomainHtml;
+
+    if (item.status === "taken") {
+        buttonHtml = /*html*/ `
+            <button 
+                type="button" 
+                class="btn btn-outline-danger" 
+                disabled>
+                    Tidak Tersedia
+            </button>
+        `;
+        subdomainHtml = /*html*/ `<h5 class="text-decoration-line-through mb-0"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
+    } else {
+        buttonHtml = /*html*/ `
             <button 
                 type="button" 
                 class="btn btn-outline-primary btn-create" 
@@ -72,6 +90,14 @@ function createSubdomainListItem(item) {
                 data-subdomain="${item.subdomain}">
                     Pilih Subdomain
             </button>
+        `;
+        subdomainHtml = /*html*/ `<h5 class="mb-0"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
+    }
+
+    listItem.innerHTML = /*html*/ `
+        <div class="d-flex w-100 align-items-center justify-content-between">
+            ${subdomainHtml}
+            ${buttonHtml}
         </div>
     `;
     return listItem;
@@ -84,9 +110,12 @@ function displaySubdomainResults(data, resultList) {
         resultList.appendChild(listItem);
     });
 
-    document.getElementById("subdomainsContainer").hidden = false;
-
+    showSearchResultContainer();
     addShowModalEventToButtonCreates();
+}
+
+function showSearchResultContainer() {
+    document.getElementById("subdomainsContainer").hidden = false;
 }
 
 // Function to add event listener to the btn-create buttons
@@ -97,7 +126,7 @@ function addShowModalEventToButtonCreates() {
             document.getElementById("createSubdomainForm").reset(); // Reset form
 
             // Set the modal title and input values
-            const title = this.dataset.subdomain + "." + this.dataset.domain;
+            const title = `${this.dataset.subdomain}.${this.dataset.domain}`;
             document.getElementById("modalCreateLabel").innerHTML = title;
 
             // set value to hidden form input
@@ -109,40 +138,33 @@ function addShowModalEventToButtonCreates() {
 }
 
 // Add Event listenenr to form
-const form = document.getElementById("createSubdomainForm");
-form.addEventListener("submit", function (e) {
+const createSubdomainForm = document.getElementById("createSubdomainForm");
+createSubdomainForm.addEventListener("submit", async function (e) {
     e.preventDefault(); // Mencegah form melakukan submit default
 
     const formData = new FormData(this);
-    console.log(JSON.stringify(Object.fromEntries(formData)));
 
-    fetch(`${serverUrl}/api/subdomain/create`, {
+    const data = await fetchCreateSubdomain(formData);
+    const response = await data.json();
+
+    if (response.success && response.data.securityCode) {
+        hideCreateModal();
+        showSecurityCodeModal(response.data.securityCode);
+    } else {
+        alert("Failed to create subdomain.");
+    }
+});
+
+// Function to make the API call to create a subdomain
+async function fetchCreateSubdomain(formData) {
+    return fetch(`${serverUrl}/api/subdomain/create`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(Object.fromEntries(formData)),
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("Success:", data);
-            const modal = bootstrap.Modal.getInstance(
-                document.getElementById("modalCreate")
-            );
-            modal.hide();
-
-            // Show the security code modal and fill it with the code
-            if (data.data.securityCode) {
-                showSecurityCodeModal(data.data.securityCode);
-            } else {
-                // Handle the case where no security code is provided
-                console.error("No security code provided in the response");
-            }
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-        });
-});
+    });
+}
 
 // Function to show the security code modal and fill it with the code
 function showSecurityCodeModal(securityCode) {
@@ -167,4 +189,11 @@ function showSecurityCodeModal(securityCode) {
 
     // Show the modal
     securityCodeModal.show();
+}
+
+function hideCreateModal() {
+    const createModal = bootstrap.Modal.getInstance(
+        document.getElementById("modalCreate")
+    );
+    createModal.hide();
 }

@@ -1,56 +1,89 @@
-<div class="container py-5">
-    <div class="row">
+<div class="container-fluid py-5">
+    <!-- Start Subdomain Search -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-12 col-lg-10 col-xl-6">
+            <div class="card">
+                <div class="card-body text-center p-4 p-sm-5">
+                    <h1 class="card-title fw-bolder mb-3">SubdomainLy</h1>
+                    <p class="card-text mb-4">
+                        Buat subdomain gratis dan unik dengan Subdomainly.
+                    </p>
+                    <div class="mb-3">
+                        <div class="input-group input-group-lg">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="subdomain-input"
+                                placeholder="Cari Subdomain"
+                                aria-label="Cari Subdomain"
+                                aria-describedby="btn-search"
+                            />
+                            <button
+                                class="btn btn-outline-primary"
+                                type="button"
+                                disabled
+                                id="btn-search"
+                                onclick="searchSubdomain()"
+                            >
+                                <i class="fa fa-search"></i>        
+                                Cari
+                            </button>
+                        </div>
+                        <div class="text-danger mt-2" id="searchError">
+                            <!-- Error message will be displayed here -->
+                        </div>
+                    </div>
 
-    <div class="card col col-lg-8 mx-auto">
-        <div class="card-body text-center p-5">
-            
-            <h1 class="card-title fw-bolder">SubdomainLy</h1>
+                    <div
+                        id="example-container"
+                        data-theme="light"
+                        data-appearance="execute"
+                    ></div>
 
-            <p class="card-text">
-                Buat subdomain gratis dan unik dengan Subdomainly.
-            </p>
-
-            <div class="row m-3">
-                <div class="col input-group input-group-lg mb-3">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="subdomain-input"
-                        placeholder="Cari Subdomain"
-                        aria-label="Cari Subdomain"
-                        aria-describedby="btn-search"
-                    />
-                    <button
-                        class="btn btn-outline-primary"
-                        type="button"
-                        disabled
-                        id="btn-search"
-                        onclick="searchSubdomain()"
-                    >
-                        <i class="fa fa-search"></i>        
-                        Cari
-                    </button>
+                    <div id="subdomainsContainer" class="mt-4" hidden>
+                        <h3 class="card-title mb-3">Subdomain yang Tersedia</h3>
+                        <div id="result-list" class="list-group">
+                            <!-- Hasil pencarian akan dimasukkan di sini -->
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div
-                id="example-container"
-                data-theme="light"
-                data-appearance="execute"
-            ></div>
-
-            <div class="row m-5" id="subdomainsContainer" hidden>
-                <h3 class="card-title m-3">Subdomain yang Tersedia</h3>
-                <div id="result-list" class="list-group">
-                    <!-- Hasil pencarian akan dimasukkan di sini -->
-                </div>
-            </div>
-
         </div>
     </div>
+<!-- End Subdomain Search -->
 
+    <!-- Start Subdomain Created -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-6">
+            <div class="card">
+                <div class="card-body text-center p-4">
+                    <h3 class="card-title fw-medium mb-4">Subdomain Terdaftar</h3>
+                    <div class="row justify-content-center" id="registeredSubdomainContainer">
+
+                        <!-- list item -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <!-- Subdomain link will be displayed here -->
+                                    </p>
+                                    <p class="card-text">
+                                        <!-- Subdomain created date will be displayed here -->
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end list item -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Subdomain Created -->
 </div>
-</div>
+
+
 
 <%- include('partials/modal-create') %>
 <%- include('partials/modal-security-code') %>
@@ -58,3 +91,50 @@
     const serverUrl = "<%= process.env.SERVER_DOMAIN %>";
 </script>
 <script src="static/js/scripts.js"></script>
+
+
+<script>
+    async function fetchSubdomainList() {
+        try {
+            // Fetch data from the API
+            const response = await fetch(`${serverUrl}/api/subdomain/list`);
+            const data = await response.json();
+
+            // Check if the request was successful
+            if (data.success) {
+                const subdomainList = data.data;
+                const container = document.getElementById('registeredSubdomainContainer');
+                
+                // Clear the container before adding new items
+                container.innerHTML = '';
+
+                // Build the HTML string for all subdomains
+                let subdomainHTML = '';
+                subdomainList.forEach(item => {
+                    subdomainHTML += /*html*/ `
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="http://${item.name}" class="card-text link-underline link-underline-opacity-0">${item.name}</a>
+                                    <p class="card-text">${item.domain}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Inject the HTML string into the container
+                container.innerHTML = subdomainHTML;
+            } else {
+                console.error('Failed to load subdomains:', data.message);
+            }
+        } catch (error) {
+            console.error('Error fetching subdomain list:', error);
+        }
+    }
+
+    // Panggil fungsi fetch ketika halaman selesai dimuat
+    document.addEventListener('DOMContentLoaded', async () => {
+        await fetchSubdomainList();
+    });
+</script>
