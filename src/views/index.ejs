@@ -82,6 +82,7 @@
 <%- include('partials/modal-security-code') %>
 <script>
     const serverUrl = "<%= process.env.SERVER_DOMAIN %>";
+    const TURNSTILE_SITE_KEY = "<%= process.env.TURNSTILE_SITE_KEY %>";
 </script>
 <script src="static/js/search-subdomain.js"></script>
 <script src="static/js/registered-subdomain.js"></script>

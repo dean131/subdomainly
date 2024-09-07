@@ -5,7 +5,7 @@ let MODAL_TOGLE = false;
 // Function to initialize Turnstile when the window loads
 window.onloadTurnstileCallback = function () {
     turnstile.render("#example-container", {
-        sitekey: "1x00000000000000000000AA",
+        sitekey: TURNSTILE_SITE_KEY,
         callback: onTurnstileSuccess,
     });
 };
@@ -47,11 +47,13 @@ async function searchSubdomain() {
 
         if (data.success && data.data.length > 0) {
             displaySubdomainResults(data.data, resultList);
+        } else if (data.success && data.data.length === 0) {
+            searchError.innerHTML = "<p>Subdomain tidak tersedia.</p>";
         } else {
-            resultList.innerHTML = "<p>Subdomain tidak tersedia.</p>";
+            searchError.innerHTML = `<p>${data.message}</p>`;
         }
     } catch (error) {
-        resultList.innerHTML = `<p>Error: ${error.message}</p>`;
+        searchError.innerHTML = `<p>Error: ${error.message}</p>`;
     }
 }
 
