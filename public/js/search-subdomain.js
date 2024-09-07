@@ -214,6 +214,5 @@ function hideCreateModal() {
 // });
 
 function handleSearchInput(event) {
-    event.target.value = event.target.value.toLowerCase();
-    console.log(event.target.value);
+    event.target.value = event.target.value.toLowerCase().trim();
 }
