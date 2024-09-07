@@ -37,7 +37,11 @@ async function searchSubdomain() {
 
     // Check if the subdomain input is empty
     if (!subdomain) {
-        searchError.innerHTML = "<p>Please enter a subdomain to search.</p>";
+        searchError.innerHTML = /*html*/ `
+        <p id="searchErrorMessage" class="invalid-feedback">
+            Please enter a subdomain to search.
+        </p>
+        `;
         return;
     }
 
