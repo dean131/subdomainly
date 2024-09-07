@@ -10,6 +10,8 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    networks:
+      - nginx-proxy-manager_default
 
 
 networks:
