@@ -200,6 +200,7 @@ function showSecurityCodeModal(securityCode) {
     securityCodeModal.show();
 }
 
+// Function to hide the create subdomain modal
 function hideCreateModal() {
     const createModal = bootstrap.Modal.getInstance(
         document.getElementById("modalCreate")
@@ -207,12 +208,7 @@ function hideCreateModal() {
     createModal.hide();
 }
 
-// Add event listener to the close button in the security code modal
-// const input = document.getElementById("subdomain-input");
-// input.addEventListener("input", () => {
-//     input.value = input.value.toLowerCase();
-// });
-
+// Function to handle the search input event
 function handleSearchInput(event) {
     event.target.value = event.target.value.toLowerCase().trim();
 }
