@@ -1,0 +1,60 @@
+<div class="container py-5">
+    <div class="row">
+
+    <div class="card col col-lg-8 mx-auto">
+        <div class="card-body text-center p-5">
+            
+            <h1 class="card-title fw-bolder">SubdomainLy</h1>
+
+            <p class="card-text">
+                Buat subdomain gratis dan unik dengan Subdomainly.
+            </p>
+
+            <div class="row m-3">
+                <div class="col input-group input-group-lg mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="subdomain-input"
+                        placeholder="Cari Subdomain"
+                        aria-label="Cari Subdomain"
+                        aria-describedby="btn-search"
+                    />
+                    <button
+                        class="btn btn-outline-primary"
+                        type="button"
+                        disabled
+                        id="btn-search"
+                        onclick="searchSubdomain()"
+                    >
+                        <i class="fa fa-search"></i>        
+                        Cari
+                    </button>
+                </div>
+            </div>
+
+            <div
+                id="example-container"
+                data-theme="light"
+                data-appearance="execute"
+            ></div>
+
+            <div class="row m-5" id="subdomainsContainer" hidden>
+                <h3 class="card-title m-3">Subdomain yang Tersedia</h3>
+                <div id="result-list" class="list-group">
+                    <!-- Hasil pencarian akan dimasukkan di sini -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</div>
+
+<%- include('partials/modal-create') %>
+<%- include('partials/modal-security-code') %>
+<script>
+    const serverUrl = "<%= process.env.SERVER_DOMAIN %>";
+</script>
+<script src="static/js/scripts.js"></script>

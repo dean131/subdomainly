@@ -1,0 +1,57 @@
+<!-- Modal -->
+<div
+    class="modal fade"
+    id="securityCodeModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="securityCodeModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="securityCodeModalLabel">
+                    Security Code
+                </h1>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <p class="card-text text-danger">
+                    Salin kode keamanan ini dan simpan di tempat yang aman.
+                </p>
+                <div class="input-group mb-3">
+                    <input
+                        id="securityCodeInput"
+                        type="text"
+                        class="form-control"
+                        aria-label="Security Code"
+                        aria-describedby="btn-search"
+                        readonly
+                    />
+                    <button
+                        class="btn btn-outline-secondary"
+                        type="button"
+                        id="securityCodeCopyButton"
+                    >
+                        Copy Code
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                >
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
