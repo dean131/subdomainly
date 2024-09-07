@@ -16,6 +16,13 @@ function onTurnstileSuccess(token) {
     document.getElementById("btn-search").disabled = false;
 }
 
+// Function to handle the Enter key press event
+function handleEnterKey(event) {
+    if (event.key === "Enter") {
+        searchSubdomain();
+    }
+}
+
 // Function to fetch subdomain search results from the server
 async function searchSubdomain() {
     const subdomain = document.getElementById("subdomain-input").value;
