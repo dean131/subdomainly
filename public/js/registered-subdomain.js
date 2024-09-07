@@ -93,23 +93,32 @@ async function fetchSubdomainList(page = 1) {
             // Kosongkan kontainer sebelum menambahkan item baru
             container.innerHTML = "";
 
-            // Build HTML string untuk daftar subdomain
-            let subdomainHTML = "";
-            subdomainList.forEach((item) => {
-                subdomainHTML += `
-                    <div class="col-12 col-md-6 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <a href="http://${item.name}" class="card-text link-underline link-underline-opacity-0">${item.name}</a>
-                                <p class="card-text">${item.domain}</p>
-                            </div>
-                        </div>
+            // Periksa apakah subdomainList kosong
+            if (subdomainList.length === 0) {
+                container.innerHTML = `
+                    <div class="col-12">
+                        <p class="text-center">Belum ada subdomain terdaftar</p>
                     </div>
                 `;
-            });
+            } else {
+                // Build HTML string untuk daftar subdomain
+                let subdomainHTML = "";
+                subdomainList.forEach((item) => {
+                    subdomainHTML += `
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="http://${item.name}" class="card-text link-underline link-underline-opacity-0">${item.name}</a>
+                                    <p class="card-text">${item.domain}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
 
-            // Tampilkan daftar subdomain ke container
-            container.innerHTML = subdomainHTML;
+                // Tampilkan daftar subdomain ke container
+                container.innerHTML = subdomainHTML;
+            }
 
             // Generate pagination controls
             const pagination = data.pagination;
