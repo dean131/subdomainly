@@ -39,7 +39,7 @@ async function searchSubdomain() {
     if (!subdomain) {
         searchError.innerHTML = /*html*/ `
         <p id="searchErrorMessage" class="invalid-feedback">
-            Please enter a subdomain to search.
+            Silakan masukkan subdomain yang ingin dicari.
         </p>
         `;
         return;
