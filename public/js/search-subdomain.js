@@ -87,17 +87,17 @@ function createSubdomainListItem(item) {
         buttonHtml = /*html*/ `
             <button 
                 type="button" 
-                class="btn btn-outline-danger" 
+                class="btn btn-outline-danger col-md-auto" 
                 disabled>
                     Tidak Tersedia
             </button>
         `;
-        subdomainHtml = /*html*/ `<h5 class="text-decoration-line-through mb-0"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
+        subdomainHtml = /*html*/ `<h5 class="col-md-auto text-decoration-line-through mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
     } else {
         buttonHtml = /*html*/ `
             <button 
                 type="button" 
-                class="btn btn-outline-primary btn-create" 
+                class="btn btn-outline-primary btn-create col-md-auto" 
                 data-bs-toggle="modal" 
                 data-bs-target="#modalCreate"
                 data-domain="${item.domain}"
@@ -105,11 +105,11 @@ function createSubdomainListItem(item) {
                     Pilih Subdomain
             </button>
         `;
-        subdomainHtml = /*html*/ `<h5 class="mb-0"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
+        subdomainHtml = /*html*/ `<h5 class="col-md-auto mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
     }
 
     listItem.innerHTML = /*html*/ `
-        <div class="d-flex w-100 align-items-center justify-content-between">
+        <div class="row align-items-center justify-content-between">
             ${subdomainHtml}
             ${buttonHtml}
         </div>
