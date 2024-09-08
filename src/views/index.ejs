@@ -36,11 +36,16 @@
                         </div>
                     </div>
 
-                    <div
+                    <div class="checkbox mb-3">
+                        <!-- Turnstile widget -->
+                        <div class="cf-turnstile" data-sitekey="<%= process.env.TURNSTILE_SITE_KEY %>" data-theme="light"></div>
+                    </div>
+
+                    <!-- <div
                         id="example-container"
                         data-theme="light"
                         data-appearance="execute"
-                    ></div>
+                    ></div> -->
 
                     <div id="subdomainsContainer" class="mt-4" hidden>
                         <h3 class="card-title mb-3">Subdomain yang Tersedia</h3>
