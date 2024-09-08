@@ -82,8 +82,16 @@
 <%- include('partials/modal-create') %>
 <%- include('partials/modal-security-code') %>
 <script>
-    const serverUrl = "<%= process.env.SERVER_DOMAIN %>";
-    const TURNSTILE_SITE_KEY = "<%= process.env.TURNSTILE_SITE_KEY %>";
+    let serverUrl = "";
+    let TURNSTILE_SITE_KEY = "";
+    
+    if ("<%= process.env.DEBUG %>" === "true") {
+        serverUrl = "<%= process.env.DEV_SERVER_DOMAIN %>";
+        TURNSTILE_SITE_KEY = "<%= process.env.DEV_TURNSTILE_SITE_KEY %>";
+    } else {
+        serverUrl = "<%= process.env.SERVER_DOMAIN %>";
+        TURNSTILE_SITE_KEY = "<%= process.env.TURNSTILE_SITE_KEY %>";
+    }
 </script>
 <script src="static/js/search-subdomain.js"></script>
 <script src="static/js/registered-subdomain.js"></script>

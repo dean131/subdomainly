@@ -78,8 +78,9 @@ async function fetchSubdomainList(page = 1) {
     try {
         // Fetch data dari API sesuai halaman
         const response = await fetch(
-            `${serverUrl}/api/subdomain/list?page=${page}`
+            `${serverUrl}api/subdomain/list?page=${page}`
         );
+        console.log(response);
         const data = await response.json();
 
         if (data.success) {
@@ -104,18 +105,35 @@ async function fetchSubdomainList(page = 1) {
                 // Build HTML string untuk daftar subdomain
                 let subdomainHTML = "";
                 subdomainList.forEach((item) => {
-                    subdomainHTML += `
+                    subdomainHTML += /*html*/ `
                         <div class="col-12 col-md-6 mb-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="http://${item.name}" class="card-text link-underline link-underline-opacity-0">${item.name}</a>
-                                    <div class="row">
-                                        <div class="col">
-                                            <button class="btn btn-outline-warning">
-                                                Edit
-                                            </button>
-                                        </div>
+
+                                    <div class="input-group mb-1">
+                                        <input type="text" class="form-control font-monospace fw-semibold" value="${item.name}" readonly>
+                                        <button class="btn btn-outline-primary rounded" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-caret-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="fa-regular fa-pen-to-square"></i>
+                                                    Ubah
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item text-danger" href="#">
+                                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                                    Laporkan
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
+                                    <p class="card-text text-body-secondary fw-light">
+                                        <strong>Domain:</strong> ${item.domain}
+                                    </p>
+
                                 </div>
                             </div>
                         </div>

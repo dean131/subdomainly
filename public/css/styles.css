@@ -70,7 +70,11 @@
     font-style: italic;
 }
 
-body {
+/* body {
     font-family: "Roboto", sans-serif;
     color: #333;
+} */
+
+:root {
+    --bs-primary: #ff5733; /* Ganti dengan warna yang Anda inginkan */
 }
