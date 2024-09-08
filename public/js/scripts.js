@@ -7,3 +7,8 @@ function showAlert(message) {
         </div>
     `;
 }
+
+function hideAlert() {
+    const alert = document.getElementById("searchError");
+    alert.innerHTML = "";
+}
