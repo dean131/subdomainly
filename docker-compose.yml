@@ -1,5 +1,6 @@
 services:
-  app:
+  subdomainly-app:
+    container_name: subdomainly-app
     build:
       context: .
       dockerfile: Dockerfile
