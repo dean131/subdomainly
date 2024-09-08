@@ -12,3 +12,5 @@ function hideAlert() {
     const alert = document.getElementById("searchError");
     alert.innerHTML = "";
 }
+
+// test
