@@ -1,5 +1,5 @@
 function showAlert(message) {
-    const alert = document.getElementById("alert");
+    const alert = document.getElementById("searchError");
     alert.innerHTML = /*html*/ `
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         ${message}
