@@ -109,7 +109,13 @@ async function fetchSubdomainList(page = 1) {
                             <div class="card">
                                 <div class="card-body">
                                     <a href="http://${item.name}" class="card-text link-underline link-underline-opacity-0">${item.name}</a>
-                                    <p class="card-text">${item.domain}</p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-outline-warning">
+                                                Edit
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
