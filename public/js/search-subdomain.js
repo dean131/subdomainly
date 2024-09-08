@@ -2,32 +2,27 @@
 let TURNSTILE_TOKEN = "";
 let MODAL_TOGLE = false;
 
-TURNSTILE_TOKEN = document.querySelector(".cf-turnstile iframe").dataset[
-    "cf-turnstile-response"
-];
+// Function to initialize Turnstile when the window loads
+window.onloadTurnstileCallback = function () {
+    turnstile.render("#example-container", {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: onTurnstileSuccess,
+    });
+};
 
-// // Function to initialize Turnstile when the window loads
-// window.onloadTurnstileCallback = function () {
-//     turnstile.render("#example-container", {
-//         sitekey: TURNSTILE_SITE_KEY,
-//         callback: onTurnstileSuccess,
-//     });
-// };
+// Callback function triggered when Turnstile validation is successful
+function onTurnstileSuccess(token) {
+    TURNSTILE_TOKEN = token;
+    console.log("Turnstile token:", token);
+    document.getElementById("btn-search").disabled = false;
+}
 
-// // Callback function triggered when Turnstile validation is successful
-// function onTurnstileSuccess(token) {
-//     TURNSTILE_TOKEN = token;
-//     document.getElementById("btn-search").disabled = false;
-// }
-
-// // Function to handle the Enter key press event
-// function handleEnterKey(event) {
-//     if (event.key === "Enter") {
-//         searchSubdomain();
-//     }
-// }
-
-document.getElementById("btn-search").disabled = true;
+// Function to handle the Enter key press event
+function handleEnterKey(event) {
+    if (event.key === "Enter") {
+        searchSubdomain();
+    }
+}
 
 // Function to fetch subdomain search results from the server
 async function searchSubdomain() {
