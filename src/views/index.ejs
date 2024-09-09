@@ -82,6 +82,7 @@
 <%- include('partials/modal-create') %>
 <%- include('partials/modal-security-code') %>
 <script>
+    const node_env = "<%= process.env.NODE_ENV %>";
     let serverUrl = "<%= process.env.SERVER_DOMAIN %>";
     let TURNSTILE_SITE_KEY = "<%= process.env.TURNSTILE_SITE_KEY %>";
 </script>

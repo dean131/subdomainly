@@ -2,3 +2,9 @@ services:
   subdomainly-app:
     env_file:
       - .env.prod
+    networks:
+      - nginx-proxy-manager_default
+
+networks:
+  nginx-proxy-manager_default:
+    external: true
