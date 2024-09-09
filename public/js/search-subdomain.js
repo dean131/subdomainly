@@ -118,7 +118,7 @@ function createAvailableButton(item) {
     return `
         <button
             type="button"
-            class="btn btn-outline-primary btn-create col-md-auto"
+            class="btn btn-outline-primary btn-create-subdomain col-md-auto"
 
             data-domain="${item.domain}"
             data-subdomain="${item.subdomain}">
@@ -154,9 +154,9 @@ function showSearchResultContainer() {
     document.getElementById("subdomainsContainer").hidden = false;
 }
 
-// Function to add event listener to the btn-create buttons
+// Function to add event listener to the btn-create-subdomain buttons
 function giveEventToButtonCreates() {
-    const buttons = document.querySelectorAll(".btn-create");
+    const buttons = document.querySelectorAll(".btn-create-subdomain");
     buttons.forEach((button) => {
         button.addEventListener("click", function () {
             resetCreateSubdomainForm();
@@ -164,6 +164,7 @@ function giveEventToButtonCreates() {
                 this.dataset.subdomain,
                 this.dataset.domain
             );
+            toggleCreateSubdomainModal();
         });
     });
 }

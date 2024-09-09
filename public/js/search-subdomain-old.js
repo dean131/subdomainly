@@ -96,7 +96,7 @@ function createSubdomainListItem(item) {
         buttonHtml = /*html*/ `
             <button
                 type="button"
-                class="btn btn-outline-primary btn-create col-md-auto"
+                class="btn btn-outline-primary btn-create-subdomain col-md-auto"
                 data-bs-toggle="modal"
                 data-bs-target="#modalCreate"
                 data-domain="${item.domain}"
@@ -131,9 +131,9 @@ function showSearchResultContainer() {
     document.getElementById("subdomainsContainer").hidden = false;
 }
 
-// Function to add event listener to the btn-create buttons
+// Function to add event listener to the btn-create-subdomain buttons
 function addShowModalEventToButtonCreates() {
-    const buttons = document.querySelectorAll(".btn-create");
+    const buttons = document.querySelectorAll(".btn-create-subdomain");
     buttons.forEach((button) => {
         button.addEventListener("click", function () {
             document.getElementById("createSubdomainForm").reset(); // Reset form
