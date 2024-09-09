@@ -119,8 +119,7 @@ function createAvailableButton(item) {
         <button
             type="button"
             class="btn btn-outline-primary btn-create col-md-auto"
-            data-bs-toggle="modal"
-            data-bs-target="#modalCreate"
+
             data-domain="${item.domain}"
             data-subdomain="${item.subdomain}">
                 Pilih Subdomain
