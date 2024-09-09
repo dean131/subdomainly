@@ -124,14 +124,14 @@ function createSubdomainCard(item) {
                                 </a>    
                             </li>
                             <li>
-                                <a class="dropdown-item" data-subdomain="${item.name}" href="">
+                                <a class="dropdown-item" data-subdomain="${item.name}" href="#">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                     Ubah
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item text-danger btn-delete-subdomain" 
-                                    href=""
+                                    href="#"
                                     data-subdomain="${item.name}"
                                 >
                                     <i class="fa-regular fa-trash-can"></i>
@@ -139,7 +139,7 @@ function createSubdomainCard(item) {
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item text-danger" href="">
+                                <a class="dropdown-item text-danger" href="#">
                                     <i class="fa-solid fa-circle-exclamation"></i>
                                     Laporkan
                                 </a>
