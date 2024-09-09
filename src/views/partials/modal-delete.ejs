@@ -1,0 +1,61 @@
+<!-- Modal -->
+<div
+    class="modal fade"
+    id="modalDeleteSubdomain"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="modalDeleteSubdomainLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalDeleteSubdomainLabel">
+                    Hapus Subdomain
+                </h1>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <form id="deleteSubdomainForm">
+                    <div class="mb-3">
+                        <label for="securityCodeInput" class="form-label">
+                            Security Code
+                        </label>
+                        <input
+                            type="text"
+                            name="securityCode"
+                            class="form-control"
+                            id="securityCodeInput"
+                            placeholder="Enter your security code"
+                            required
+                        />
+                    </div>
+                    <input type="hidden" id="subdomainInput" name="subdomain" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    Batal
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    id="confirmDeleteButton"
+                >
+                    Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

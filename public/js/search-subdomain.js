@@ -13,7 +13,6 @@ window.onloadTurnstileCallback = function () {
 // Callback function triggered when Turnstile validation is successful
 function onTurnstileSuccess(token) {
     TURNSTILE_TOKEN = token;
-    console.log("Turnstile token:", token);
     document.getElementById("btn-search").disabled = false;
 }
 
@@ -26,23 +25,12 @@ function handleEnterKey(event) {
 
 // Function to fetch subdomain search results from the server
 async function searchSubdomain() {
-    const subdomain = document.getElementById("subdomain-input").value;
+    const subdomain = document.getElementById("subdomain-search-input").value;
 
-    // Clear the previous search error message
-    const searchError = document.getElementById("searchError");
-    searchError.innerHTML = "";
+    clearPreviousSearchResults();
 
-    // Clear the previous search results
-    const resultList = document.getElementById("result-list");
-    resultList.innerHTML = "";
-
-    // Check if the subdomain input is empty
     if (!subdomain) {
-        searchError.innerHTML = /*html*/ `
-        <p id="searchErrorMessage" class="invalid-feedback">
-            Silakan masukkan subdomain yang ingin dicari.
-        </p>
-        `;
+        displaySearchError("Silakan masukkan subdomain yang ingin dicari.");
         return;
     }
 
@@ -50,21 +38,34 @@ async function searchSubdomain() {
         const response = await fetchSubdomainData(subdomain);
         const data = await response.json();
 
-        if (data.success && data.data.length > 0) {
-            displaySubdomainResults(data.data, resultList);
-        } else if (data.success && data.data.length === 0) {
-            searchError.innerHTML = "<p>Subdomain tidak tersedia.</p>";
+        if (data.success) {
+            if (data.data.length > 0) {
+                displaySubdomainSearchResults(data.data);
+            } else {
+                displaySearchError("Subdomain tidak tersedia.");
+            }
         } else {
-            searchError.innerHTML = `<p>${data.message}</p>`;
+            displaySearchError(data.message);
         }
     } catch (error) {
-        searchError.innerHTML = `<p>Error: ${error.message}</p>`;
+        displaySearchError(`Error: ${error.message}`);
     }
+}
+
+// Function to clear previous search results and errors
+function clearPreviousSearchResults() {
+    document.getElementById("searchError").innerHTML = "";
+    document.getElementById("result-list").innerHTML = "";
+}
+
+// Function to display search error messages
+function displaySearchError(message) {
+    document.getElementById("searchError").innerHTML = `<p>${message}</p>`;
 }
 
 // Function to make the API call to search for subdomains
 async function fetchSubdomainData(subdomain) {
-    return await fetch(`${serverUrl}/api/subdomain/search`, {
+    return fetch(`${serverUrl}/api/subdomain/search`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -76,39 +77,22 @@ async function fetchSubdomainData(subdomain) {
     });
 }
 
+// Function to create a subdomain list item
 function createSubdomainListItem(item) {
     const listItem = document.createElement("a");
     listItem.className = "list-group-item list-group-item-action";
 
-    let buttonHtml;
-    let subdomainHtml;
+    const buttonHtml =
+        item.status === "taken"
+            ? createUnavailableButton()
+            : createAvailableButton(item);
 
-    if (item.status === "taken") {
-        buttonHtml = /*html*/ `
-            <button 
-                type="button" 
-                class="btn btn-outline-danger col-md-auto" 
-                disabled>
-                    Tidak Tersedia
-            </button>
-        `;
-        subdomainHtml = /*html*/ `<h5 class="col-md-auto text-decoration-line-through mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
-    } else {
-        buttonHtml = /*html*/ `
-            <button 
-                type="button" 
-                class="btn btn-outline-primary btn-create col-md-auto" 
-                data-bs-toggle="modal" 
-                data-bs-target="#modalCreate"
-                data-domain="${item.domain}"
-                data-subdomain="${item.subdomain}">
-                    Pilih Subdomain
-            </button>
-        `;
-        subdomainHtml = /*html*/ `<h5 class="col-md-auto mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
-    }
+    const subdomainHtml =
+        item.status === "taken"
+            ? createUnavailableSubdomainHtml(item)
+            : createAvailableSubdomainHtml(item);
 
-    listItem.innerHTML = /*html*/ `
+    listItem.innerHTML = `
         <div class="row align-items-center justify-content-between">
             ${subdomainHtml}
             ${buttonHtml}
@@ -117,57 +101,105 @@ function createSubdomainListItem(item) {
     return listItem;
 }
 
+// Function to create unavailable button HTML
+function createUnavailableButton() {
+    return `
+        <button
+            type="button"
+            class="btn btn-outline-danger col-md-auto"
+            disabled>
+                Tidak Tersedia
+        </button>
+    `;
+}
+
+// Function to create available button HTML
+function createAvailableButton(item) {
+    return `
+        <button
+            type="button"
+            class="btn btn-outline-primary btn-create col-md-auto"
+            data-bs-toggle="modal"
+            data-bs-target="#modalCreate"
+            data-domain="${item.domain}"
+            data-subdomain="${item.subdomain}">
+                Pilih Subdomain
+        </button>
+    `;
+}
+
+// Function to create unavailable subdomain HTML
+function createUnavailableSubdomainHtml(item) {
+    return `<h5 class="col-md-auto text-decoration-line-through mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
+}
+
+// Function to create available subdomain HTML
+function createAvailableSubdomainHtml(item) {
+    return `<h5 class="col-md-auto mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
+}
+
 // Function to display the search results in the UI
-function displaySubdomainResults(data, resultList) {
+function displaySubdomainSearchResults(data) {
+    const resultList = document.getElementById("result-list");
     data.forEach((item) => {
         const listItem = createSubdomainListItem(item);
         resultList.appendChild(listItem);
     });
 
     showSearchResultContainer();
-    addShowModalEventToButtonCreates();
+    giveEventToButtonCreates();
 }
 
+// Function to show the search result container
 function showSearchResultContainer() {
     document.getElementById("subdomainsContainer").hidden = false;
 }
 
 // Function to add event listener to the btn-create buttons
-function addShowModalEventToButtonCreates() {
+function giveEventToButtonCreates() {
     const buttons = document.querySelectorAll(".btn-create");
     buttons.forEach((button) => {
         button.addEventListener("click", function () {
-            document.getElementById("createSubdomainForm").reset(); // Reset form
-
-            // Set the modal title and input values
-            const title = `${this.dataset.subdomain}.${this.dataset.domain}`;
-            document.getElementById("modalCreateLabel").innerHTML = title;
-
-            // set value to hidden form input
-            document.getElementById("subdomainInput").value =
-                this.dataset.subdomain;
-            document.getElementById("domainInput").value = this.dataset.domain;
+            resetCreateSubdomainForm();
+            setCreateModalTitleAndInputs(
+                this.dataset.subdomain,
+                this.dataset.domain
+            );
         });
     });
 }
 
-// Add Event listenenr to form
-const createSubdomainForm = document.getElementById("createSubdomainForm");
-createSubdomainForm.addEventListener("submit", async function (e) {
-    e.preventDefault(); // Mencegah form melakukan submit default
+// Function to reset the create subdomain form
+function resetCreateSubdomainForm() {
+    document.getElementById("createSubdomainForm").reset();
+}
 
-    const formData = new FormData(this);
+// Function to set the create modal title and input values
+function setCreateModalTitleAndInputs(subdomain, domain) {
+    document.getElementById(
+        "modalCreateLabel"
+    ).innerHTML = `${subdomain}.${domain}`;
+    document.getElementById("subdomainInput").value = subdomain;
+    document.getElementById("domainInput").value = domain;
+}
 
-    const data = await fetchCreateSubdomain(formData);
-    const response = await data.json();
+// Add event listener to the create subdomain form
+document
+    .getElementById("createSubdomainForm")
+    .addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const response = await fetchCreateSubdomain(formData);
+        const data = await response.json();
 
-    if (response.success && response.data.securityCode) {
-        hideCreateModal();
-        showSecurityCodeModal(response.data.securityCode);
-    } else {
-        alert("Failed to create subdomain.");
-    }
-});
+        if (data.success && data.data.securityCode) {
+            // hideCreateModal();
+            toggleCreateSubdomainModal();
+            showSecurityCodeModal(data.data.securityCode);
+        } else {
+            alert("Failed to create subdomain.");
+        }
+    });
 
 // Function to make the API call to create a subdomain
 async function fetchCreateSubdomain(formData) {
@@ -188,10 +220,14 @@ function showSecurityCodeModal(securityCode) {
     const securityCodeInput = document.querySelector("#securityCodeInput");
     const copyButton = document.getElementById("securityCodeCopyButton");
 
-    // Set the security code in the input field
     securityCodeInput.value = securityCode;
+    setupCopyButton(copyButton, securityCodeInput);
 
-    // Set up the copy button functionality
+    securityCodeModal.show();
+}
+
+// Function to set up the copy button functionality
+function setupCopyButton(copyButton, securityCodeInput) {
     copyButton.addEventListener("click", function () {
         securityCodeInput.select();
         document.execCommand("copy");
@@ -200,17 +236,20 @@ function showSecurityCodeModal(securityCode) {
             copyButton.textContent = "Copy";
         }, 2000);
     });
-
-    // Show the modal
-    securityCodeModal.show();
 }
 
-// Function to hide the create subdomain modal
-function hideCreateModal() {
-    const createModal = bootstrap.Modal.getInstance(
-        document.getElementById("modalCreate")
-    );
-    createModal.hide();
+// // Function to hide the create subdomain modal
+// function hideCreateModal() {
+//     const createModal = bootstrap.Modal.getInstance(
+//         document.getElementById("modalCreate")
+//     );
+//     createModal.hide();
+// }
+
+// Function to toggle the create subdomain modal
+function toggleCreateSubdomainModal() {
+    const createModal = new bootstrap.Modal("#modalCreate");
+    createModal.toggle();
 }
 
 // Function to handle the search input event
