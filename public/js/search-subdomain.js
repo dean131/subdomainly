@@ -193,8 +193,8 @@ document
 
         if (data.success && data.data.securityCode) {
             // hideCreateModal();
-            showSecurityCodeModal(data.data.securityCode);
             toggleCreateSubdomainModal();
+            showSecurityCodeModal(data.data.securityCode);
         } else {
             alert("Failed to create subdomain.");
         }
