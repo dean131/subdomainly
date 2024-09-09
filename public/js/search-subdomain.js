@@ -163,7 +163,7 @@ function giveEventToButtonCreates() {
                 this.dataset.subdomain,
                 this.dataset.domain
             );
-            // toggleCreateSubdomainModal();
+            toggleCreateSubdomainModal();
         });
     });
 }
@@ -193,8 +193,8 @@ document
 
         if (data.success && data.data.securityCode) {
             // hideCreateModal();
-            // toggleCreateSubdomainModal();
             showSecurityCodeModal(data.data.securityCode);
+            toggleCreateSubdomainModal();
         } else {
             alert("Failed to create subdomain.");
         }
@@ -246,10 +246,10 @@ function setupCopyButton(copyButton, securityCodeInput) {
 // }
 
 // Function to toggle the create subdomain modal
-// function toggleCreateSubdomainModal() {
-//     const createModal = new bootstrap.Modal("#modalCreate");
-//     createModal.toggle();
-// }
+function toggleCreateSubdomainModal() {
+    const createModal = new bootstrap.Modal("#modalCreate");
+    createModal.toggle();
+}
 
 // Function to handle the search input event
 function handleSearchInput(event) {
