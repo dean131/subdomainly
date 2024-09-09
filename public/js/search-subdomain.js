@@ -192,7 +192,6 @@ document
         const data = await response.json();
 
         if (data.success && data.data.securityCode) {
-            // hideCreateModal();
             toggleCreateSubdomainModal();
             showSecurityCodeModal(data.data.securityCode);
         } else {
@@ -213,14 +212,19 @@ async function fetchCreateSubdomain(formData) {
 
 // Function to show the security code modal and fill it with the code
 function showSecurityCodeModal(securityCode) {
-    const securityCodeModal = new bootstrap.Modal(
-        document.getElementById("securityCodeModal")
-    );
+    const securityCodeModalElement =
+        document.getElementById("securityCodeModal");
+    const securityCodeModal = new bootstrap.Modal(securityCodeModalElement);
     const securityCodeInput = document.querySelector("#securityCodeInput");
     const copyButton = document.getElementById("securityCodeCopyButton");
 
     securityCodeInput.value = securityCode;
     setupCopyButton(copyButton, securityCodeInput);
+
+    // Add event listener to reload the window when the modal is closed
+    securityCodeModalElement.addEventListener("hidden.bs.modal", function () {
+        window.location.reload();
+    });
 
     securityCodeModal.show();
 }
@@ -236,14 +240,6 @@ function setupCopyButton(copyButton, securityCodeInput) {
         }, 2000);
     });
 }
-
-// // Function to hide the create subdomain modal
-// function hideCreateModal() {
-//     const createModal = bootstrap.Modal.getInstance(
-//         document.getElementById("modalCreate")
-//     );
-//     createModal.hide();
-// }
 
 // Function to toggle the create subdomain modal
 function toggleCreateSubdomainModal() {
