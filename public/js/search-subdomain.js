@@ -41,6 +41,8 @@ async function searchSubdomain() {
         if (data.success) {
             if (data.data.length > 0) {
                 displaySubdomainSearchResults(data.data);
+                showSearchResultContainer();
+                giveEventToButtonCreates();
             } else {
                 displaySearchError("Subdomain tidak tersedia.");
             }
@@ -144,9 +146,6 @@ function displaySubdomainSearchResults(data) {
         const listItem = createSubdomainListItem(item);
         resultList.appendChild(listItem);
     });
-
-    showSearchResultContainer();
-    giveEventToButtonCreates();
 }
 
 // Function to show the search result container
