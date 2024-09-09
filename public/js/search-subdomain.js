@@ -163,7 +163,7 @@ function giveEventToButtonCreates() {
                 this.dataset.subdomain,
                 this.dataset.domain
             );
-            toggleCreateSubdomainModal();
+            // toggleCreateSubdomainModal();
         });
     });
 }
@@ -193,7 +193,7 @@ document
 
         if (data.success && data.data.securityCode) {
             // hideCreateModal();
-            toggleCreateSubdomainModal();
+            // toggleCreateSubdomainModal();
             showSecurityCodeModal(data.data.securityCode);
         } else {
             alert("Failed to create subdomain.");
