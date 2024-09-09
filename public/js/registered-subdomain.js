@@ -118,31 +118,31 @@ function createSubdomainCard(item) {
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <button class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="#">
                                     <i class="fa-regular fa-eye"></i>
                                     Kunjungi
-                                </button>    
+                                </a>    
                             </li>
                             <li>
-                                <button class="dropdown-item" data-subdomain="${item.name}" href="#">
+                                <a class="dropdown-item" data-subdomain="${item.name}" href="#">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                     Ubah
-                                </button>
+                                </a>
                             </li>
                             <li>
-                                <button class="dropdown-item text-danger btn-delete-subdomain" 
+                                <a class="dropdown-item text-danger btn-delete-subdomain" 
                                     href="#" 
                                     data-subdomain="${item.name}"
                                 >
                                     <i class="fa-regular fa-trash-can"></i>
                                     Hapus
-                                </button>
+                                </a>
                             </li>
                             <li>
-                                <button class="dropdown-item text-danger" href="#">
+                                <a class="dropdown-item text-danger" href="#">
                                     <i class="fa-solid fa-circle-exclamation"></i>
                                     Laporkan
-                                </button>
+                                </a>
                             </li>
                         </ul>
                     </div>
