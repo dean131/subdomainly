@@ -9,34 +9,73 @@ $text-secondary: #666666;
 // Import Bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-// Set the global font family
+// Set the global font family and base font size
 body {
     background-color: $background;
     font-family: "Roboto", sans-serif;
+    font-size: $font-size-base;
     color: $text-primary;
+    margin: 0;
+    padding: 0;
 }
 
-// Cool animation for the search input field
-@keyframes inputBorderAnimation {
-    0% {
-        box-shadow: 0 0 0 0px rgba($primary, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba($primary, 0.2);
-    }
-    100% {
-        box-shadow: 0 0 0 0px rgba($primary, 0);
+// Navbar styles
+.navbar {
+    background-color: $primary;
+    .navbar-brand,
+    .navbar-nav .nav-link {
+        color: $secondary;
+        font-size: $font-size-large;
+        &:hover {
+            color: $accent;
+        }
     }
 }
 
-// Apply only to the specific search input
+// Button styles
+.btn-primary {
+    background-color: $primary;
+    border-color: $primary;
+    font-size: $font-size-base;
+    &:hover {
+        background-color: darken($primary, 10%);
+        border-color: darken($primary, 10%);
+    }
+}
+
+.btn-secondary {
+    background-color: $secondary;
+    border-color: $secondary;
+    color: $text-primary;
+    font-size: $font-size-base;
+    &:hover {
+        background-color: darken($secondary, 10%);
+        border-color: darken($secondary, 10%);
+    }
+}
+
+// Footer styles
+.footer {
+    background-color: $primary;
+    color: $secondary;
+    padding: 1rem;
+    text-align: center;
+    font-size: $font-size-small;
+    a {
+        color: $accent;
+        &:hover {
+            color: lighten($accent, 10%);
+        }
+    }
+}
+
+// Search input styles
 #subdomain-search-input {
     border: 2px solid $primary;
     border-radius: 5px;
     padding: 0.5rem;
+    font-size: $font-size-base;
     transition: all 0.3s ease-in-out;
-    // Start animation on page load
-    animation: inputBorderAnimation 2s ease-out;
     &:focus {
         outline: none;
         color: $text-primary;
@@ -50,52 +89,36 @@ body {
     &::placeholder {
         color: $text-secondary;
         opacity: 0.75;
-        animation: placeholderAnimation 6s infinite;
     }
 }
 
-// Navbar styles
-.navbar {
-    background-color: $primary;
-    .navbar-brand,
-    .navbar-nav .nav-link {
-        color: $secondary;
-        &:hover {
-            color: $accent;
-        }
-    }
-}
-
-// Button styles
-.btn-primary {
-    background-color: $primary;
-    border-color: $primary;
+// List group item styles
+.list-group-item {
+    border: 1px solid $primary;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    font-size: $font-size-base;
+    transition: all 0.3s ease-in-out;
     &:hover {
-        background-color: darken($primary, 10%);
-        border-color: darken($primary, 10%);
+        background-color: lighten($secondary, 10%);
+        border-color: $accent;
     }
 }
 
-.btn-secondary {
-    background-color: $secondary;
-    border-color: $secondary;
-    color: $text-primary;
-    &:hover {
-        background-color: darken($secondary, 10%);
-        border-color: darken($secondary, 10%);
-    }
-}
-
-// Footer styles
-.footer {
+// Modal styles
+.modal-header {
     background-color: $primary;
     color: $secondary;
-    padding: 1rem;
-    text-align: center;
-    a {
-        color: $accent;
-        &:hover {
-            color: lighten($accent, 10%);
-        }
-    }
+    font-size: $font-size-large;
+}
+
+.modal-footer {
+    background-color: lighten($primary, 20%);
+    font-size: $font-size-small;
+}
+
+.modal-content {
+    border-radius: 10px;
+    font-size: $font-size-base;
 }
