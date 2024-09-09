@@ -64,7 +64,7 @@ async function searchSubdomain() {
 
 // Function to make the API call to search for subdomains
 async function fetchSubdomainData(subdomain) {
-    return await fetch(`${serverUrl}api/subdomain/search`, {
+    return await fetch(`${serverUrl}/api/subdomain/search`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -171,7 +171,7 @@ createSubdomainForm.addEventListener("submit", async function (e) {
 
 // Function to make the API call to create a subdomain
 async function fetchCreateSubdomain(formData) {
-    return fetch(`${serverUrl}api/subdomain/create`, {
+    return fetch(`${serverUrl}/api/subdomain/create`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

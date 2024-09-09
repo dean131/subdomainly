@@ -78,7 +78,7 @@ async function fetchSubdomainList(page = 1) {
     try {
         // Fetch data dari API sesuai halaman
         const response = await fetch(
-            `${serverUrl}api/subdomain/list?page=${page}`
+            `${serverUrl}/api/subdomain/list?page=${page}`
         );
         console.log(response);
         const data = await response.json();
