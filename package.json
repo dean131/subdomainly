@@ -6,16 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "build-css": "sass public/css/styles.scss public/dist/styles.css",
+    "watch-css": "sass --watch public/css/styles.scss:public/dist/styles.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "sass": "^1.32.0"
   }
 }

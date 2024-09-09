@@ -1,0 +1,54 @@
+// Base colors: Blue and White
+$primary: #003680;    // Dark blue
+$secondary: #ffffff;  // White
+$accent: #ff6f61;     // Accent color for interactions
+$background: #f0f0f0; // Light gray for backgrounds
+$text-primary: #333333;
+$text-secondary: #666666;
+
+// Import Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+
+// Cool animation for the search input field
+@keyframes inputBorderAnimation {
+    0% {
+        box-shadow: 0 0 0 0px rgba($primary, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba($primary, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 0 0px rgba($primary, 0);
+    }
+}
+
+
+// Apply only to the specific search input
+#subdomain-search-input {
+    border: 2px solid $primary;
+    border-radius: 5px;
+    padding: 0.5rem;
+    transition: all 0.3s ease-in-out;
+    
+    // Start animation on page load
+    animation: inputBorderAnimation 2s ease-out;
+
+    &:focus {
+        outline: none;
+        color: $text-primary;
+        border-color: $primary;
+        box-shadow: 0px 0px 10px rgba($primary, 0.5);
+    }
+
+    &:hover {
+        background-color: lighten($secondary, 10%);
+        border-color: $accent;
+    }
+
+    &::placeholder {
+        color: $text-secondary;
+        opacity: 0.75;
+        animation: placeholderAnimation 6s infinite;
+    }
+}
