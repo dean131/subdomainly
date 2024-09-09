@@ -247,7 +247,10 @@ function setupCopyButton(copyButton, securityCodeInput) {
 
 // Function to toggle the create subdomain modal
 function toggleCreateSubdomainModal() {
-    const createModal = new bootstrap.Modal("#modalCreate");
+    const createModalElement = document.getElementById("modalCreate");
+    const createModal =
+        bootstrap.Modal.getInstance(createModalElement) ||
+        new bootstrap.Modal(createModalElement);
     createModal.toggle();
 }
 
