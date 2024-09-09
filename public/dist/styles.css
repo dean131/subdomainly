@@ -13034,7 +13034,7 @@ textarea.form-control-lg {
 }
 #subdomain-search-input::placeholder {
   color: #666666;
-  opacity: 0.8;
+  opacity: 0.75;
   animation: placeholderAnimation 6s infinite;
 }
 
