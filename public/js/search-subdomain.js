@@ -249,17 +249,9 @@ function setupCopyButton(copyButton, securityCodeInput) {
 function toggleCreateSubdomainModal() {
     const createSubdomainModalElement = document.getElementById("modalCreate");
     // If instance is already created, use it; otherwise, create a new one
-
-    console.log("Sebelum Create Modal");
-    console.log(bootstrap.Modal.getInstance(createSubdomainModalElement));
-
     const createSubdomainModal =
         bootstrap.Modal.getInstance(createSubdomainModalElement) ||
         new bootstrap.Modal(createSubdomainModalElement);
-
-    console.log("Sesudah Create Modal");
-    console.log(bootstrap.Modal.getInstance(createSubdomainModalElement));
-
     createSubdomainModal.toggle();
 }
 

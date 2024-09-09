@@ -190,8 +190,14 @@ function setDeleteModalTitleAndInputs(subdomain) {
 
 // Function to toggle the delete subdomain modal
 function toggleDeleteSubdomainModal() {
-    const deleteModal = new bootstrap.Modal("#modalDeleteSubdomain");
-    deleteModal.toggle();
+    const deleteSubdomainModalElement = document.getElementById(
+        "modalDeleteSubdomain"
+    );
+    // create bootstrap modal instance if not already created, otherwise show it
+    const deleteSubdomainModal =
+        bootstrap.Modal.getInstance(deleteSubdomainModalElement) ||
+        new bootstrap.Modal(deleteSubdomainModalElement);
+    deleteSubdomainModal.toggle();
 }
 
 // Function to make the API call to delete a subdomain
@@ -218,8 +224,9 @@ document
 
             if (data.success) {
                 alert("Subdomain deleted successfully.");
-                hideDeleteModal();
+                toggleDeleteSubdomainModal();
                 // Optionally, refresh the subdomain list or perform other UI updates
+                fetchSubdomainList();
             } else {
                 alert(`Error: ${data.message}`);
             }
@@ -229,12 +236,12 @@ document
     });
 
 // Function to hide the delete subdomain modal
-function hideDeleteModal() {
-    const deleteModal = bootstrap.Modal.getInstance(
-        document.getElementById("modalDelete")
-    );
-    deleteModal.hide();
-}
+// function hideDeleteModal() {
+//     const deleteModal = bootstrap.Modal.getInstance(
+//         document.getElementById("modalDelete")
+//     );
+//     deleteModal.hide();
+// }
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchSubdomainList();
