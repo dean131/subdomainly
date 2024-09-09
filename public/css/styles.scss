@@ -13,7 +13,6 @@ $text-secondary: #666666;
 body {
     background-color: $background;
     font-family: "Roboto", sans-serif;
-    font-size: $font-size-base;
     color: $text-primary;
     margin: 0;
     padding: 0;
@@ -25,7 +24,6 @@ body {
     .navbar-brand,
     .navbar-nav .nav-link {
         color: $secondary;
-        font-size: $font-size-large;
         &:hover {
             color: $accent;
         }
@@ -36,7 +34,6 @@ body {
 .btn-primary {
     background-color: $primary;
     border-color: $primary;
-    font-size: $font-size-base;
     &:hover {
         background-color: darken($primary, 10%);
         border-color: darken($primary, 10%);
@@ -47,7 +44,6 @@ body {
     background-color: $secondary;
     border-color: $secondary;
     color: $text-primary;
-    font-size: $font-size-base;
     &:hover {
         background-color: darken($secondary, 10%);
         border-color: darken($secondary, 10%);
@@ -60,7 +56,6 @@ body {
     color: $secondary;
     padding: 1rem;
     text-align: center;
-    font-size: $font-size-small;
     a {
         color: $accent;
         &:hover {
@@ -74,7 +69,6 @@ body {
     border: 2px solid $primary;
     border-radius: 5px;
     padding: 0.5rem;
-    font-size: $font-size-base;
     transition: all 0.3s ease-in-out;
     &:focus {
         outline: none;
@@ -98,7 +92,6 @@ body {
     border-radius: 5px;
     margin-bottom: 0.5rem;
     padding: 1rem;
-    font-size: $font-size-base;
     transition: all 0.3s ease-in-out;
     &:hover {
         background-color: lighten($secondary, 10%);
@@ -110,15 +103,12 @@ body {
 .modal-header {
     background-color: $primary;
     color: $secondary;
-    font-size: $font-size-large;
 }
 
 .modal-footer {
     background-color: lighten($primary, 20%);
-    font-size: $font-size-small;
 }
 
 .modal-content {
     border-radius: 10px;
-    font-size: $font-size-base;
 }
