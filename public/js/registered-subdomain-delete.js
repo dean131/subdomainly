@@ -24,7 +24,7 @@ document
 
 // Function to make the API call to delete a subdomain
 async function fetchDeleteSubdomain(formData) {
-    return fetch(`${serverUrl}/api/subdomain/delete`, {
+    return fetch(`${SERVER_URL}/api/subdomain/delete`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -58,14 +58,11 @@ function setDeleteModalTitleAndInputs(subdomain) {
     document.getElementById("subdomainDeleteInput").value = subdomain;
 }
 
-// Function to add event listener to the btn-delete buttons
-function addShowModalEventToButtonDeletes() {
-    const buttons = document.querySelectorAll(".btn-delete-subdomain");
-    buttons.forEach((button) => {
-        button.addEventListener("click", function () {
-            resetDeleteSubdomainForm();
-            setDeleteModalTitleAndInputs(this.dataset.subdomain);
-            toggleDeleteSubdomainModal();
-        });
-    });
-}
+// Add event listener to delete subdomain buttons
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("subdomain-delete-button")) {
+        resetDeleteSubdomainForm();
+        setDeleteModalTitleAndInputs(e.target.dataset.name);
+        toggleDeleteSubdomainModal();
+    }
+});

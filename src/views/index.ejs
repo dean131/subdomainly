@@ -78,14 +78,15 @@
 </div>
 
 
-<%- include('partials/modal-create') %>
 <%- include('partials/modal-security-code') %>
+<%- include('partials/modal-create') %>
+<%- include('partials/modal-update') %>
 <%- include('partials/modal-delete') %>
 
 
 <script>
     const node_env = "<%= process.env.NODE_ENV %>";
-    let serverUrl = "<%= process.env.SERVER_DOMAIN %>";
+    let SERVER_URL = "<%= process.env.SERVER_DOMAIN %>";
     let TURNSTILE_SITE_KEY = "<%= process.env.TURNSTILE_SITE_KEY %>";
 </script>
 <script
@@ -96,5 +97,6 @@
 <script src="static/js/utils.js"></script>
 <script src="static/js/search-subdomain.js"></script>
 <script src="static/js/registered-subdomain-get.js"></script>
+<script src="static/js/registered-subdomain-update.js"></script>
 <script src="static/js/registered-subdomain-delete.js"></script>
 

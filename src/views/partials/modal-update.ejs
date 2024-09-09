@@ -1,0 +1,56 @@
+<!-- Update Subdomain Modal -->
+<div
+    class="modal fade"
+    id="updateSubdomainModal"
+    tabindex="-1"
+    aria-labelledby="updateSubdomainModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateSubdomainModalLabel">Update Subdomain</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <form id="updateSubdomainForm">
+                    <input type="hidden" class="form-control" id="domainUpdateInput">
+                    <input type="hidden" class="form-control" id="prevSubdomainUpdateInput" name="prevSubdomain">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">New Subdomain Name</label>
+                        <input type="text" class="form-control" id="nameUpdateInput" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="typeInput" class="form-label">Type</label>
+                        <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        id="typeInput"
+                        name="type"
+                        >
+                        <option value="A">A</option>
+                        <option value="CNAME">CNAME</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <input type="text" class="form-control" id="contentUpdateInput" name="content" required>
+                </div>
+                <div class="mb-3">
+                    <label for="securityCode" class="form-label">Security Code</label>
+                    <input type="text" class="form-control" id="securityCodeUpdateInput" name="securityCode" required>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" id="confirmUpdateButton">Simpah Perubahan</button>
+            </div>
+        </div>
+    </div>
+</div>

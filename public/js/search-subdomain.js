@@ -42,7 +42,7 @@ async function searchSubdomain() {
             if (data.data.length > 0) {
                 displaySubdomainSearchResults(data.data);
                 showSearchResultContainer();
-                giveEventToButtonCreates();
+                giveEventToCreateButtons();
             } else {
                 displaySearchError("Subdomain tidak tersedia.");
             }
@@ -67,7 +67,7 @@ function displaySearchError(message) {
 
 // Function to make the API call to search for subdomains
 async function fetchSubdomainData(subdomain) {
-    return fetch(`${serverUrl}/api/subdomain/search`, {
+    return fetch(`${SERVER_URL}/api/subdomain/search`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -154,7 +154,7 @@ function showSearchResultContainer() {
 }
 
 // Function to add event listener to the btn-create-subdomain buttons
-function giveEventToButtonCreates() {
+function giveEventToCreateButtons() {
     const buttons = document.querySelectorAll(".btn-create-subdomain");
     buttons.forEach((button) => {
         button.addEventListener("click", function () {
@@ -201,7 +201,7 @@ document
 
 // Function to make the API call to create a subdomain
 async function fetchCreateSubdomain(formData) {
-    return fetch(`${serverUrl}/api/subdomain/create`, {
+    return fetch(`${SERVER_URL}/api/subdomain/create`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

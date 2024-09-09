@@ -87,7 +87,7 @@ function renderPaginationControls(pagination) {
 async function fetchSubdomainList(page = 1) {
     try {
         const response = await fetch(
-            `${serverUrl}/api/subdomain/list?page=${page}`
+            `${SERVER_URL}/api/subdomain/list?page=${page}`
         );
         const data = await response.json();
 
@@ -110,7 +110,6 @@ function renderSubdomainList(subdomainList) {
         container.innerHTML = makeAlert("Belum ada subdomain yang terdaftar.");
     } else {
         container.innerHTML = subdomainList.map(createSubdomainCard).join("");
-        addShowModalEventToButtonDeletes();
     }
 }
 
@@ -132,22 +131,24 @@ function createSubdomainCard(item) {
                                 </a>    
                             </li>
                             <li>
-                                <a class="dropdown-item" data-subdomain="${item.name}" href="#">
+                                <a class="dropdown-item subdomain-update-button" 
+                                    data-name="${item.name}" 
+                                    data-domain="${item.domain}"
+                                >
                                     <i class="fa-regular fa-pen-to-square"></i>
                                     Ubah
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item text-danger btn-delete-subdomain" 
-                                    href="#"
-                                    data-subdomain="${item.name}"
+                                <a class="dropdown-item text-danger subdomain-delete-button" 
+                                    data-name="${item.name}"
                                 >
                                     <i class="fa-regular fa-trash-can"></i>
                                     Hapus
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item text-danger" href="#">
+                                <a class="dropdown-item text-danger" >
                                     <i class="fa-solid fa-circle-exclamation"></i>
                                     Laporkan
                                 </a>
