@@ -185,7 +185,7 @@ function setDeleteModalTitleAndInputs(subdomain) {
     document.getElementById(
         "modalDeleteSubdomainLabel"
     ).innerHTML = `Delete ${subdomain}`;
-    document.getElementById("subdomainInput").value = subdomain;
+    document.getElementById("subdomainDeleteInput").value = subdomain;
 }
 
 // Function to toggle the delete subdomain modal
