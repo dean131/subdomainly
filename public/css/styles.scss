@@ -1,68 +1,54 @@
-// Primary color
-$primary: #003680;
-
-// Additional elegant color palette
-$secondary: #f5f5f5;
-$accent: #ff6f61;
-$background: #f0f0f0;
+// Base colors: Blue and White
+$primary: #003680;    // Dark blue
+$secondary: #ffffff;  // White
+$accent: #ff6f61;     // Accent color for interactions
+$background: #f0f0f0; // Light gray for backgrounds
 $text-primary: #333333;
 $text-secondary: #666666;
 
 // Import Bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-// Custom styles
-body {
-    background-color: $background;
-    color: $text-primary;
-    font-family: 'Roboto', sans-serif;
+
+// Cool animation for the search input field
+@keyframes inputBorderAnimation {
+    0% {
+        box-shadow: 0 0 0 0px rgba($primary, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba($primary, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 0 0px rgba($primary, 0);
+    }
 }
 
-a {
-    color: $primary;
+
+// Apply only to the specific search input
+#subdomain-search-input {
+    border: 2px solid $primary;
+    border-radius: 5px;
+    padding: 0.5rem;
+    transition: all 0.3s ease-in-out;
+    
+    // Start animation on page load
+    animation: inputBorderAnimation 2s ease-out;
+
+    &:focus {
+        outline: none;
+        color: $text-primary;
+        border-color: $primary;
+        box-shadow: 0px 0px 10px rgba($primary, 0.5);
+    }
+
     &:hover {
-        color: $accent;
+        background-color: lighten($secondary, 10%);
+        border-color: $accent;
     }
-}
 
-.navbar {
-    background-color: $primary;
-    .navbar-brand, .navbar-nav .nav-link {
-        color: $secondary;
-        &:hover {
-            color: $accent;
-        }
-    }
-}
-
-.btn-primary {
-    background-color: $primary;
-    border-color: $primary;
-    &:hover {
-        background-color: darken($primary, 10%);
-        border-color: darken($primary, 10%);
-    }
-}
-
-.btn-secondary {
-    background-color: $secondary;
-    border-color: $secondary;
-    color: $text-primary;
-    &:hover {
-        background-color: darken($secondary, 10%);
-        border-color: darken($secondary, 10%);
-    }
-}
-
-.footer {
-    background-color: $primary;
-    color: $secondary;
-    padding: 1rem;
-    text-align: center;
-    a {
-        color: $accent;
-        &:hover {
-            color: lighten($accent, 10%);
-        }
+    &::placeholder {
+        color: $text-secondary;
+        opacity: 0.8;
+        animation: placeholderAnimation 6s infinite;
     }
 }
