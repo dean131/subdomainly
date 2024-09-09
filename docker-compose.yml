@@ -1,6 +1,7 @@
 services:
   subdomainly-app:
     container_name: subdomainly-app
+    restart: always
     build: .
     volumes:
       - .:/app
