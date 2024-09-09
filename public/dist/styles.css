@@ -13004,6 +13004,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  background-color: #f0f0f0;
+  font-family: "Roboto", sans-serif;
+  color: #333333;
+}
+
 @keyframes inputBorderAnimation {
   0% {
     box-shadow: 0 0 0 0px rgba(0, 54, 128, 0.5);
@@ -13030,12 +13036,56 @@ textarea.form-control-lg {
 }
 #subdomain-search-input:hover {
   background-color: white;
-  border-color: #ff6f61;
+  border-color: #008080;
 }
 #subdomain-search-input::placeholder {
   color: #666666;
   opacity: 0.75;
   animation: placeholderAnimation 6s infinite;
+}
+
+.navbar {
+  background-color: #003680;
+}
+.navbar .navbar-brand,
+.navbar .navbar-nav .nav-link {
+  color: #ffffff;
+}
+.navbar .navbar-brand:hover,
+.navbar .navbar-nav .nav-link:hover {
+  color: #008080;
+}
+
+.btn-primary {
+  background-color: #003680;
+  border-color: #003680;
+}
+.btn-primary:hover {
+  background-color: #00204d;
+  border-color: #00204d;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #333333;
+}
+.btn-secondary:hover {
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
+}
+
+.footer {
+  background-color: #003680;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+}
+.footer a {
+  color: #008080;
+}
+.footer a:hover {
+  color: #00b3b3;
 }
 
 /*# sourceMappingURL=styles.css.map */
