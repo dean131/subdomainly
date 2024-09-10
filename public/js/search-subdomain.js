@@ -29,6 +29,7 @@ function handleSearchInput(event) {
 
 // Function to clear previous search results and errors
 function clearPreviousSearchResults() {
+    toggleSearchResultContainer();
     document.getElementById("searchError").innerHTML = "";
     document.getElementById("result-list").innerHTML = "";
 }
@@ -152,6 +153,5 @@ function toggleSearchResultContainer() {
     const searchResultContainer = document.getElementById(
         "subdomainsSearcehResultContainer"
     );
-    console.log(searchResultContainer.hidden);
-    // searchResultContainer.hidden = !searchResultContainer.hidden;
+    searchResultContainer.hidden = !searchResultContainer.hidden;
 }
