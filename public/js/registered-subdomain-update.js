@@ -8,7 +8,7 @@ document
             const response = await fetchUpdateSubdomain(formData);
             const data = await response.json();
             if (data.success) {
-                shwoAlert("Subdomain berhasil diperbarui.", "success");
+                makeAlert("Subdomain berhasil diperbarui.", "success");
                 toggleUpdateSubdomainModal();
                 // Optionally, refresh the subdomain list or perform other UI updates
                 fetchSubdomainList();
