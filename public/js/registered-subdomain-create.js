@@ -68,7 +68,7 @@ function showSecurityCodeModal(securityCode) {
 
     console.log(securityCodeModal);
 
-    const securityCodeInput = document.querySelector("#securityCodeInput");
+    const securityCodeInput = document.getElementById("securityCodeInput");
     const copyButton = document.getElementById("securityCodeCopyButton");
 
     securityCodeInput.value = securityCode;
