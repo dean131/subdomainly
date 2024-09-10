@@ -58,6 +58,7 @@ function setCreateModalTitleAndInputs(subdomain, domain) {
 
 // Function to show the security code modal and fill it with the code
 function showSecurityCodeModal(securityCode) {
+    console.log(securityCode);
     const securityCodeModalElement =
         document.getElementById("securityCodeModal");
     // If instance is already created, use it; otherwise, create a new one
@@ -65,7 +66,6 @@ function showSecurityCodeModal(securityCode) {
         bootstrap.Modal.getInstance(securityCodeModalElement) ||
         new bootstrap.Modal(securityCodeModalElement);
 
-    console.log(securityCode);
     console.log(securityCodeModal);
 
     const securityCodeInput = document.querySelector("#securityCodeInput");
