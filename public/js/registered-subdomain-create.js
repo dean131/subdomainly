@@ -83,6 +83,8 @@ function setupCopyButton(copyButton, securityCodeInput) {
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("btn-create-subdomain")) {
         toggleCreateSubdomainModal();
+        console.log(e.target.dataset.domain);
+        console.log(e.target.dataset.subdomain);
         setCreateModalTitleAndInputs(
             this.dataset.subdomain,
             this.dataset.domain
