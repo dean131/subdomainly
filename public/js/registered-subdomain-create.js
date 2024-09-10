@@ -12,6 +12,7 @@ document
             showSecurityCodeModal(data.data.securityCode);
             // Optionally, refresh the subdomain list or perform other UI updates
             fetchSubdomainList();
+            clearPreviousSearchResults();
         } else {
             alert("Failed to create subdomain.");
         }

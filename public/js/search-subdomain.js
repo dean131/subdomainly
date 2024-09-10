@@ -103,7 +103,7 @@ function createSubdomainListItem(item) {
             : createAvailableSubdomainHtml(item);
 
     listItem.innerHTML = `
-        <div class="row align-items-center justify-content-between">
+        <div class="row align-items-center justify-content-between px-2">
             ${subdomainHtml}
             ${buttonHtml}
         </div>
@@ -139,12 +139,12 @@ function createAvailableButton(item) {
 
 // Function to create unavailable subdomain HTML
 function createUnavailableSubdomainHtml(item) {
-    return `<h5 class="col-md-auto text-decoration-line-through mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
+    return `<h5 class="col-md-auto text-decoration-line-through mb-2"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
 }
 
 // Function to create available subdomain HTML
 function createAvailableSubdomainHtml(item) {
-    return `<h5 class="col-md-auto mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
+    return `<h5 class="col-md-auto mb-2"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
 }
 
 // Function to show the search result container
