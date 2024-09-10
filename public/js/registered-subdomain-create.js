@@ -66,15 +66,13 @@ function showSecurityCodeModal(securityCode) {
         bootstrap.Modal.getInstance(securityCodeModalElement) ||
         new bootstrap.Modal(securityCodeModalElement);
 
-    console.log(securityCodeModal);
+    securityCodeModal.show();
 
     const securityCodeInput = document.getElementById("securityCodeInput");
     const copyButton = document.getElementById("securityCodeCopyButton");
 
     securityCodeInput.value = securityCode;
     setupCopyButton(copyButton, securityCodeInput);
-
-    securityCodeModal.show();
 }
 
 // Function to set up the copy button functionality
