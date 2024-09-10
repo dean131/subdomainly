@@ -198,59 +198,68 @@ body {
         box-shadow: 0px 0px 0px rgba($primary, 0);
     }
 }
-/* Footer Card Style */
+
 .footer-card {
     background: linear-gradient(135deg, $primary, darken($primary, 10%));
-    color: #f8f9fa; /* Light text color */
+    color: #f8f9fa; /* Bootstrap light text color */
     border: none;
-    border-radius: 0.75rem;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    border-radius: 0.4rem; /* Reduced border radius */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 0.8rem; /* Further reduced padding */
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
 }
 
-/* Footer Card Hover */
-.footer-card:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25); /* Slightly stronger shadow */
-}
-
-/* 'Buy Me a Coffee' Button Style */
 .btn-coffee {
     background-color: $secondary;
     color: $primary;
-    padding: 0.75rem 1.5rem;
+    padding: 0.2rem 0.6rem; /* Further reduced padding */
     border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+    transition: background-color 0.2s ease, transform 0.2s ease-in-out,
+        box-shadow 0.2s ease;
     display: inline-flex;
     align-items: center;
-    margin-top: 1.5rem;
-    font-size: 1.1rem; /* Slightly larger text */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Add button shadow */
+    margin-top: 0.3rem; /* Further reduced margin */
+    margin-bottom: 0.3rem; /* Further reduced margin */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        color: $primary;
+        background-color: lighten($secondary, 10%);
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
 }
 
-/* 'Buy Me a Coffee' Button Hover */
-.btn-coffee:hover {
-    background-color: lighten($secondary, 10%);
-    transform: scale(1.1); /* Slightly grow the button on hover */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
-}
-
-/* Coffee Icon */
 .coffee-icon {
-    margin-right: 0.75rem;
-    font-size: 1.7rem; /* Larger icon */
-    color: $primary;
+    margin-right: 0.2rem; /* Further reduced margin */
+    font-size: 1rem; /* Further reduced icon size */
 }
 
-/* Social Media Icon Hover Effects */
-.social-icons a {
-    color: #f8f9fa;
-    margin: 0 10px;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+.card-text {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem; /* Further reduced font size */
 }
 
-.social-icons a:hover {
-    color: $secondary;
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem; /* Further reduced gap */
+    margin-top: 0.3rem; /* Further reduced margin */
+
+    .social-icon {
+        color: #f8f9fa; /* Bootstrap light text color */
+        font-size: 1rem; /* Further reduced icon size */
+        transition: color 0.2s ease, transform 0.2s ease-in-out;
+
+        &:hover {
+            color: lighten(#f8f9fa, 20%);
+            transform: scale(1.05); /* Slightly smaller hover effect */
+        }
+    }
 }
