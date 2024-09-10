@@ -60,7 +60,14 @@ function setCreateModalTitleAndInputs(subdomain, domain) {
 function showSecurityCodeModal(securityCode) {
     const securityCodeModalElement =
         document.getElementById("securityCodeModal");
-    const securityCodeModal = new bootstrap.Modal(securityCodeModalElement);
+    // If instance is already created, use it; otherwise, create a new one
+    const securityCodeModal =
+        bootstrap.Modal.getInstance(securityCodeModalElement) ||
+        new bootstrap.Modal(securityCodeModalElement);
+
+    console.log(securityCode);
+    console.log(securityCodeModal);
+
     const securityCodeInput = document.querySelector("#securityCodeInput");
     const copyButton = document.getElementById("securityCodeCopyButton");
 
