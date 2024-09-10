@@ -161,7 +161,11 @@ function createSubdomainCard(item) {
                                 </button>
                             </li>
                             <li>
-                                <button class="dropdown-item text-danger" >
+                                <button 
+                                    class="dropdown-item text-danger report-subdomain-button"
+                                    data-id="${item.id}" 
+                                    data-name="${item.name}"
+                                >
                                     <i class="fa-solid fa-circle-exclamation"></i>
                                     Laporkan
                                 </button>

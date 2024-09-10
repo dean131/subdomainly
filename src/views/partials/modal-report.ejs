@@ -1,0 +1,39 @@
+<div class="modal fade" id="modalReport" tabindex="-1" aria-labelledby="modalReportLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalReportLabel">Report Subdomain</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="reportSubdomainForm" action="/api/subdomain/report">
+                    <input type="hidden" class="form-control" id="subdomainIdReportInput" name="id">
+                    <div class="mb-3">
+                        <label for="subdomainReportInput" class="form-label">Subdomain</label>
+                        <input type="text" class="form-control font-monospace fw-bold" id="subdomainReportInput" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reportReason" class="form-label">Reason</label>
+                        <textarea class="form-control" id="reportReason" name="reason" rows="3" required></textarea>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-outline-primary"
+                        data-bs-dismiss="modal"
+                    >
+                        Batal
+                    </button>
+                    <button
+                        type="submit"
+                        form="reportSubdomainForm"
+                        class="btn btn-primary"
+                    >
+                        Laporkan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

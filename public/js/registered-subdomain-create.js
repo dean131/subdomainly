@@ -13,7 +13,7 @@ document
             // Optionally, refresh the subdomain list or perform other UI updates
             fetchSubdomainList();
             clearPreviousSearchResults();
-            makeAlert("Subdomain berhasil dibuat.", "success");
+            makeAlert("Subdomain berhasil dibuat.", "primary");
         } else {
             makeAlert(data.message, "danger");
         }

@@ -104,6 +104,14 @@ body {
         box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
     }
 
+    &.alert-primary {
+        background: linear-gradient(
+            135deg,
+            $primary,
+            lighten($primary, 15%)
+        ); // Blue gradient
+    }
+
     &.alert-success {
         background: linear-gradient(
             135deg,

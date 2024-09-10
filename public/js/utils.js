@@ -8,6 +8,8 @@ function makeAlert(message, type = "info") {
             ? "fa-exclamation-triangle"
             : type === "warning"
             ? "fa-exclamation-circle"
+            : type === "primary"
+            ? "fa-info-circle"
             : "fa-info-circle";
 
     const alertClass =
@@ -17,6 +19,8 @@ function makeAlert(message, type = "info") {
             ? "alert-danger"
             : type === "warning"
             ? "alert-warning"
+            : type === "primary"
+            ? "alert-primary"
             : "alert-info";
 
     alertContainer.innerHTML = `

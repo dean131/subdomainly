@@ -8,7 +8,7 @@ document
             const response = await fetchDeleteSubdomain(formData);
             const data = await response.json();
             if (data.success) {
-                makeAlert("Subdomain berhasil dihapus.", "success");
+                makeAlert("Subdomain berhasil dihapus.", "prymary");
                 toggleDeleteSubdomainModal();
                 // Optionally, refresh the subdomain list or perform other UI updates
                 fetchSubdomainList();
