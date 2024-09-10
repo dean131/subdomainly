@@ -13041,12 +13041,37 @@ body {
   background: linear-gradient(135deg, #003c8f, #004cb3);
 }
 
-#loadingSpinner {
-  position: absolute;
+/* Loading spinner style */
+.loading-spinner {
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 6px solid #003680;
+  /* Primary color spinner */
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
+  /* Ensure it stays above other elements */
+}
+
+/* Keyframes for spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* Optional: blur background while loading */
+body.loading {
+  filter: blur(5px);
+  pointer-events: none;
+  /* Disable interactions while loading */
 }
 
 #subdomain-search-input {

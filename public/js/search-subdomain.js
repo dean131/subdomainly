@@ -47,8 +47,9 @@ async function searchSubdomain() {
         return;
     }
 
-    // Show the loading spinner
-    document.getElementById("loadingSpinner").hidden = false;
+    document.getElementById("loader").hidden = false;
+    // Optional: Add blur effect to body
+    document.body.classList.add("loading");
 
     try {
         const response = await fetchSubdomainData(subdomain);
@@ -67,8 +68,9 @@ async function searchSubdomain() {
     } catch (error) {
         makeAlert(`Error: ${error.message}`, "danger");
     } finally {
-        // Hide the loading spinner
-        document.getElementById("loadingSpinner").hidden = true;
+        // Hide the loader after search completes
+        document.getElementById("loader").hidden = true;
+        document.body.classList.remove("loading");
     }
 }
 
