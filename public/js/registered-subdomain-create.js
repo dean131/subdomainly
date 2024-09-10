@@ -11,8 +11,9 @@ document
             toggleCreateSubdomainModal();
             showSecurityCodeModal(data.data.securityCode);
             // Optionally, refresh the subdomain list or perform other UI updates
-            fetchSubdomainList();
             clearPreviousSearchResults();
+            toggleSearchResultContainer();
+            fetchSubdomainList();
             makeAlert("Subdomain berhasil dibuat.", "primary");
         } else {
             makeAlert(data.message, "danger");
