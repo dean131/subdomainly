@@ -8,15 +8,15 @@ document
             const response = await fetchDeleteSubdomain(formData);
             const data = await response.json();
             if (data.success) {
-                showAlert("Subdomain berhasil dihapus.", "success");
+                makeAlert("Subdomain berhasil dihapus.", "success");
                 toggleDeleteSubdomainModal();
                 // Optionally, refresh the subdomain list or perform other UI updates
                 fetchSubdomainList();
             } else {
-                showAlert(data.message, "danger");
+                makeAlert(data.message, "danger");
             }
         } catch (error) {
-            showAlert(`Error: ${error.message}`, "danger");
+            makeAlert(`Error: ${error.message}`, "danger");
         }
     });
 

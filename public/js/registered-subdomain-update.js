@@ -13,10 +13,10 @@ document
                 // Optionally, refresh the subdomain list or perform other UI updates
                 fetchSubdomainList();
             } else {
-                showAlert(data.message, "danger");
+                makeAlert(data.message, "danger");
             }
         } catch (error) {
-            showAlert(`Error: ${error.message}`, "danger");
+            makeAlert(`Error: ${error.message}`, "danger");
         }
     });
 
