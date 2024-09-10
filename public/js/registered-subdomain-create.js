@@ -7,7 +7,7 @@ document
         const response = await fetchCreateSubdomain(formData);
         const data = await response.json();
         if (data.success && data.data.securityCode) {
-            toggleCreateSubdomainModal();
+            toggleCreateSubdomainModal("hide");
             showSecurityCodeModal(data.data.securityCode);
             // Optionally, refresh the subdomain list or perform other UI updates
             clearPreviousSearchResults();
@@ -31,14 +31,21 @@ async function fetchCreateSubdomain(formData) {
 }
 
 // Function to toggle the create subdomain modal
-function toggleCreateSubdomainModal() {
+function toggleCreateSubdomainModal(action = "toggle") {
     resetCreateSubdomainForm();
-    const createSubdomainModalElement = document.getElementById("modalCreate");
-    // If instance is already created, use it; otherwise, create a new one
+    const createSubdomainModalElement = document.getElementById(
+        "createSubdomainModal"
+    );
     const createSubdomainModal =
         bootstrap.Modal.getInstance(createSubdomainModalElement) ||
         new bootstrap.Modal(createSubdomainModalElement);
-    createSubdomainModal.toggle();
+    if (action === "show") {
+        createSubdomainModal.show();
+    } else if (action === "hide") {
+        createSubdomainModal.hide();
+    } else {
+        createSubdomainModal.toggle();
+    }
 }
 
 // Function to reset the create subdomain form
@@ -88,7 +95,7 @@ function setupCopyButton(copyButton, securityCodeInput) {
 // Function to give event to create buttons
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("btn-create-subdomain")) {
-        toggleCreateSubdomainModal();
+        toggleCreateSubdomainModal("show");
         setCreateModalTitleAndInputs(
             e.target.dataset.subdomain,
             e.target.dataset.domain
