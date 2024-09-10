@@ -11,7 +11,7 @@ document
             showSecurityCodeModal(data.data.securityCode);
             // Optionally, refresh the subdomain list or perform other UI updates
             clearPreviousSearchResults();
-            toggleSearchResultContainer();
+            toggleSearchResultContainer("hide");
             fetchSubdomainList();
             makeAlert("Subdomain berhasil dibuat.", "primary");
         } else {

@@ -11,7 +11,7 @@ document
                 makeAlert("Subdomain berhasil dihapus.", "prymary");
                 toggleDeleteSubdomainModal();
                 // Optionally, refresh the subdomain list or perform other UI updates
-                toggleSearchResultContainer();
+                toggleSearchResultContainer("hide");
                 clearPreviousSearchResults();
                 fetchSubdomainList();
             } else {

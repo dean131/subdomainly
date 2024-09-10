@@ -56,7 +56,7 @@ async function searchSubdomain() {
             if (data.data.length > 0) {
                 clearPreviousSearchResults();
                 displaySubdomainSearchResults(data.data);
-                toggleSearchResultContainer();
+                toggleSearchResultContainer("show");
             } else {
                 makeAlert("Subdomain tidak ditemukan.", "warning");
             }
@@ -154,9 +154,15 @@ function createAvailableSubdomainHtml(item) {
 }
 
 // // Function to toggle the search result container
-function toggleSearchResultContainer() {
+function toggleSearchResultContainer(action = "toggle") {
     const searchResultContainer = document.getElementById(
-        "subdomainsSearcehResultContainer"
+        "searchResultContainer"
     );
-    searchResultContainer.hidden = !searchResultContainer.hidden;
+    if (action === "show") {
+        searchResultContainer.hidden = false;
+    } else if (action === "hide") {
+        searchResultContainer.hidden = true;
+    } else {
+        searchResultContainer.hidden = !searchResultContainer.hidden;
+    }
 }
