@@ -13050,10 +13050,11 @@ body {
   width: 50px;
   height: 50px;
   animation: spin 1s linear infinite;
-  position: fixed;
-  top: 50%;
+  top: calc(100% + 10px);
+  /* Position it just below the input */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  /* Center horizontally */
   z-index: 1000;
   /* Ensure it stays above other elements */
 }

@@ -48,8 +48,6 @@ async function searchSubdomain() {
     }
 
     document.getElementById("loader").hidden = false;
-    // Optional: Add blur effect to body
-    document.body.classList.add("loading");
 
     try {
         const response = await fetchSubdomainData(subdomain);
@@ -68,9 +66,7 @@ async function searchSubdomain() {
     } catch (error) {
         makeAlert(`Error: ${error.message}`, "danger");
     } finally {
-        // Hide the loader after search completes
         document.getElementById("loader").hidden = true;
-        document.body.classList.remove("loading");
     }
 }
 
