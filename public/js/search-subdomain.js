@@ -156,7 +156,7 @@ function createAvailableSubdomainHtml(item) {
 // // Function to toggle the search result container
 function toggleSearchResultContainer(action = "toggle") {
     const searchResultContainer = document.getElementById(
-        "searchResultContainer"
+        "subdomainsSearcehResultContainer"
     );
     if (action === "show") {
         searchResultContainer.hidden = false;
