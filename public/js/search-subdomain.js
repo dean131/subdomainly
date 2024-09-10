@@ -31,6 +31,7 @@ function handleSearchInput(event) {
 function clearPreviousSearchResults() {
     document.getElementById("searchError").innerHTML = "";
     document.getElementById("result-list").innerHTML = "";
+    document.getElementById("subdomain-search-input").value = "";
 }
 
 // Function to display search error messages
