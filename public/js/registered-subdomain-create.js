@@ -86,8 +86,8 @@ document.addEventListener("click", function (e) {
         console.log(e.target.dataset.domain);
         console.log(e.target.dataset.subdomain);
         setCreateModalTitleAndInputs(
-            this.dataset.subdomain,
-            this.dataset.domain
+            e.target.dataset.subdomain,
+            e.target.dataset.domain
         );
     }
 });
