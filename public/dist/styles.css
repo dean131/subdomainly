@@ -13150,5 +13150,71 @@ body {
     box-shadow: 0px 0px 0px rgba(0, 54, 128, 0);
   }
 }
+/* Footer Card Style */
+.footer-card {
+  background: linear-gradient(135deg, #003680, #00204d);
+  color: #f8f9fa;
+  /* Light text color */
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth hover effects */
+}
+
+/* Footer Card Hover */
+.footer-card:hover {
+  transform: translateY(-5px);
+  /* Slight lift effect on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+  /* Slightly stronger shadow */
+}
+
+/* 'Buy Me a Coffee' Button Style */
+.btn-coffee {
+  background-color: #ffffff;
+  color: #003680;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  /* Slightly larger text */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  /* Add button shadow */
+}
+
+/* 'Buy Me a Coffee' Button Hover */
+.btn-coffee:hover {
+  background-color: white;
+  transform: scale(1.1);
+  /* Slightly grow the button on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* Stronger shadow */
+}
+
+/* Coffee Icon */
+.coffee-icon {
+  margin-right: 0.75rem;
+  font-size: 1.7rem;
+  /* Larger icon */
+  color: #003680;
+}
+
+/* Social Media Icon Hover Effects */
+.social-icons a {
+  color: #f8f9fa;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ffffff;
+}
 
 /*# sourceMappingURL=styles.css.map */
