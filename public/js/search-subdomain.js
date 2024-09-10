@@ -53,7 +53,6 @@ async function searchSubdomain() {
             if (data.data.length > 0) {
                 displaySubdomainSearchResults(data.data);
                 showSearchResultContainer();
-                giveEventToCreateButtons();
             } else {
                 displaySearchError("Subdomain tidak tersedia.");
             }
