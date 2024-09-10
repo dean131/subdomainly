@@ -39,7 +39,6 @@ function toggleReportSubdomainModal() {
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("report-subdomain-button")) {
         toggleReportSubdomainModal();
-        console.log(e.target.dataset.id, e.target.dataset.name);
         setReportModalInputs(e.target.dataset.id, e.target.dataset.name);
     }
 });

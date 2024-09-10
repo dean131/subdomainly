@@ -6,7 +6,6 @@ document
         const formData = new FormData(this);
         const response = await fetchCreateSubdomain(formData);
         const data = await response.json();
-        console.log(data);
         if (data.success && data.data.securityCode) {
             toggleCreateSubdomainModal();
             showSecurityCodeModal(data.data.securityCode);
@@ -58,7 +57,6 @@ function setCreateModalTitleAndInputs(subdomain, domain) {
 
 // Function to show the security code modal and fill it with the code
 function showSecurityCodeModal(securityCode) {
-    console.log(securityCode);
     const securityCodeModalElement =
         document.getElementById("securityCodeModal");
     // If instance is already created, use it; otherwise, create a new one
