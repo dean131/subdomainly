@@ -3,7 +3,7 @@ let TURNSTILE_TOKEN = "";
 
 // Function to initialize Turnstile when the window loads
 window.onloadTurnstileCallback = function () {
-    turnstile.render("#example-container", {
+    turnstile.render("#turnstile-container", {
         sitekey: TURNSTILE_SITE_KEY,
         callback: onTurnstileSuccess,
     });

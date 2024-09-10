@@ -13012,18 +13012,6 @@ body {
   padding: 0;
 }
 
-.navbar {
-  background-color: #003680;
-}
-.navbar .navbar-brand,
-.navbar .navbar-nav .nav-link {
-  color: #ffffff;
-}
-.navbar .navbar-brand:hover,
-.navbar .navbar-nav .nav-link:hover {
-  color: #008080;
-}
-
 .btn-primary {
   background-color: #003680;
   border-color: #003680;
@@ -13043,24 +13031,12 @@ body {
   border-color: #e6e6e6;
 }
 
-.footer {
-  background-color: #003680;
-  color: #ffffff;
-  padding: 1rem;
-  text-align: center;
-}
-.footer a {
-  color: #008080;
-}
-.footer a:hover {
-  color: #00b3b3;
-}
-
 #subdomain-search-input {
   border: 2px solid #003680;
   border-radius: 5px;
   padding: 0.5rem;
   transition: all 0.3s ease-in-out;
+  animation: glow 2s ease-in-out;
 }
 #subdomain-search-input:focus {
   outline: none;
@@ -13158,6 +13134,17 @@ body {
   }
   to {
     transform: translateX(0);
+  }
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0px 0px 0px rgba(0, 54, 128, 0);
+  }
+  50% {
+    box-shadow: 0px 0px 15px rgba(0, 54, 128, 0.7);
+  }
+  100% {
+    box-shadow: 0px 0px 0px rgba(0, 54, 128, 0);
   }
 }
 

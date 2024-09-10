@@ -22,18 +22,6 @@ body {
     padding: 0;
 }
 
-// Navbar styles
-.navbar {
-    background-color: $primary;
-    .navbar-brand,
-    .navbar-nav .nav-link {
-        color: $secondary;
-        &:hover {
-            color: $accent;
-        }
-    }
-}
-
 // Button styles
 .btn-primary {
     background-color: $primary;
@@ -54,26 +42,14 @@ body {
     }
 }
 
-// Footer styles
-.footer {
-    background-color: $primary;
-    color: $secondary;
-    padding: 1rem;
-    text-align: center;
-    a {
-        color: $accent;
-        &:hover {
-            color: lighten($accent, 10%);
-        }
-    }
-}
-
-// Search input styles
+// Search input styles with glow effect on page load
 #subdomain-search-input {
     border: 2px solid $primary;
     border-radius: 5px;
     padding: 0.5rem;
     transition: all 0.3s ease-in-out;
+    // glow on page load
+    animation: glow 2s ease-in-out;
     &:focus {
         outline: none;
         color: $text-primary;
@@ -199,5 +175,18 @@ body {
     }
     to {
         transform: translateX(0);
+    }
+}
+
+// Define the glow animation
+@keyframes glow {
+    0% {
+        box-shadow: 0px 0px 0px rgba($primary, 0);
+    }
+    50% {
+        box-shadow: 0px 0px 15px rgba($primary, 0.7);
+    }
+    100% {
+        box-shadow: 0px 0px 0px rgba($primary, 0);
     }
 }
