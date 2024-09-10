@@ -18,8 +18,7 @@
                 ></button>
             </div>
             <div class="modal-body">
-                <form id="updateSubdomainForm">
-                    <input type="hidden" class="form-control" id="domainUpdateInput">
+                <form id="updateSubdomainForm" action="/api/subdomain/update">
                     <input type="hidden" class="form-control" id="prevSubdomainUpdateInput" name="prevSubdomain">
                     <div class="mb-3">
                         <label for="name" class="form-label">New Subdomain Name</label>
@@ -28,15 +27,19 @@
                     <div class="mb-3">
                         <label for="typeInput" class="form-label">Type</label>
                         <select
-                        class="form-select"
-                        aria-label="Default select example"
-                        id="typeInput"
-                        name="type"
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="typeInput"
+                            name="type"
+                            required
                         >
-                        <option value="A">A</option>
-                        <option value="CNAME">CNAME</option>
-                    </select>
-                </div>
+                            <option selected disabled>
+                                -- Pilih salah satu --
+                            </option>
+                            <option value="A">A</option>
+                            <option value="CNAME">CNAME</option>
+                        </select>
+                    </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">Content</label>
                     <input type="text" class="form-control" id="contentUpdateInput" name="content" required>
@@ -49,7 +52,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" id="confirmUpdateButton">Simpah Perubahan</button>
+                <button type="submit" form="updateSubdomainForm" class="btn btn-primary" id="confirmUpdateButton">Simpah Perubahan</button>
             </div>
         </div>
     </div>

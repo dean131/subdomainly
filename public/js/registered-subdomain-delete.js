@@ -1,14 +1,12 @@
 // Event listener for the confirm delete button
 document
-    .getElementById("confirmDeleteButton")
-    .addEventListener("click", async () => {
-        const form = document.getElementById("deleteSubdomainForm");
-        const formData = new FormData(form);
-
+    .getElementById("deleteSubdomainForm")
+    .addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
         try {
             const response = await fetchDeleteSubdomain(formData);
             const data = await response.json();
-
             if (data.success) {
                 alert("Subdomain deleted successfully.");
                 toggleDeleteSubdomainModal();
@@ -35,6 +33,7 @@ async function fetchDeleteSubdomain(formData) {
 
 // Function to toggle the delete subdomain modal
 function toggleDeleteSubdomainModal() {
+    resetDeleteSubdomainForm();
     const deleteSubdomainModalElement = document.getElementById(
         "modalDeleteSubdomain"
     );
@@ -61,8 +60,7 @@ function setDeleteModalTitleAndInputs(subdomain) {
 // Add event listener to delete subdomain buttons
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("subdomain-delete-button")) {
-        resetDeleteSubdomainForm();
-        setDeleteModalTitleAndInputs(e.target.dataset.name);
         toggleDeleteSubdomainModal();
+        setDeleteModalTitleAndInputs(e.target.dataset.name);
     }
 });

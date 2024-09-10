@@ -13008,40 +13008,8 @@ body {
   background-color: #f0f0f0;
   font-family: "Roboto", sans-serif;
   color: #333333;
-}
-
-@keyframes inputBorderAnimation {
-  0% {
-    box-shadow: 0 0 0 0px rgba(0, 54, 128, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(0, 54, 128, 0.2);
-  }
-  100% {
-    box-shadow: 0 0 0 0px rgba(0, 54, 128, 0);
-  }
-}
-#subdomain-search-input {
-  border: 2px solid #003680;
-  border-radius: 5px;
-  padding: 0.5rem;
-  transition: all 0.3s ease-in-out;
-  animation: inputBorderAnimation 2s ease-out;
-}
-#subdomain-search-input:focus {
-  outline: none;
-  color: #333333;
-  border-color: #003680;
-  box-shadow: 0px 0px 10px rgba(0, 54, 128, 0.5);
-}
-#subdomain-search-input:hover {
-  background-color: white;
-  border-color: #008080;
-}
-#subdomain-search-input::placeholder {
-  color: #666666;
-  opacity: 0.75;
-  animation: placeholderAnimation 6s infinite;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar {
@@ -13086,6 +13054,39 @@ body {
 }
 .footer a:hover {
   color: #00b3b3;
+}
+
+#subdomain-search-input {
+  border: 2px solid #003680;
+  border-radius: 5px;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+#subdomain-search-input:focus {
+  outline: none;
+  color: #333333;
+  border-color: #003680;
+  box-shadow: 0px 0px 10px rgba(0, 54, 128, 0.5);
+}
+#subdomain-search-input:hover {
+  background-color: white;
+  border-color: #008080;
+}
+#subdomain-search-input::placeholder {
+  color: #666666;
+  opacity: 0.75;
+}
+
+.list-group-item {
+  border: 1px solid #003680;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+.list-group-item:hover {
+  background-color: white;
+  border-color: #008080;
 }
 
 /*# sourceMappingURL=styles.css.map */

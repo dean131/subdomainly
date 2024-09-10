@@ -125,33 +125,36 @@ function createSubdomainCard(item) {
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a href="http://${item.name}" class="dropdown-item" target="_blank">
+                                <button 
+                                    class="dropdown-item" 
+                                    onclick="window.open('http://${item.name}', '_blank');"
+                                >
                                     <i class="fa-regular fa-eye"></i>
                                     Kunjungi
-                                </a>    
+                                </button>    
                             </li>
                             <li>
-                                <a class="dropdown-item subdomain-update-button" 
+                                <button class="dropdown-item subdomain-update-button" 
                                     data-name="${item.name}" 
                                     data-domain="${item.domain}"
                                 >
                                     <i class="fa-regular fa-pen-to-square"></i>
                                     Ubah
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a class="dropdown-item text-danger subdomain-delete-button" 
+                                <button class="dropdown-item text-danger subdomain-delete-button" 
                                     data-name="${item.name}"
                                 >
                                     <i class="fa-regular fa-trash-can"></i>
                                     Hapus
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a class="dropdown-item text-danger" >
+                                <button class="dropdown-item text-danger" >
                                     <i class="fa-solid fa-circle-exclamation"></i>
                                     Laporkan
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>

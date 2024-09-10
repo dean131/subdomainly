@@ -1,28 +1,26 @@
-const confirmUpdateButton = document.querySelector("#confirmUpdateButton");
-confirmUpdateButton.addEventListener("click", async () => {
-    const form = document.getElementById("updateSubdomainForm");
-    const formData = new FormData(form);
-
-    console.log(formData);
-
-    try {
-        const response = await fetchUpdateSubdomain(formData);
-        const data = await response.json();
-
-        console.log(data);
-
-        if (data.success) {
-            alert("Subdomain updated successfully.");
-            toggleUpdateSubdomainModal();
-            fetchSubdomainList();
-        } else {
-            alert(`Error: ${data.message}`);
+// Initiate the update subdomain form submission
+document
+    .querySelector("#updateSubdomainForm")
+    .addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        try {
+            const response = await fetchUpdateSubdomain(formData);
+            const data = await response.json();
+            if (data.success) {
+                alert("Subdomain updated successfully.");
+                toggleUpdateSubdomainModal();
+                // Optionally, refresh the subdomain list or perform other UI updates
+                fetchSubdomainList();
+            } else {
+                alert(`Error: ${data.message}`);
+            }
+        } catch (error) {
+            alert(`Error: ${error.message}`);
         }
-    } catch (error) {
-        alert(`Error: ${error.message}`);
-    }
-});
+    });
 
+// Function to make the API call to update a subdomain
 async function fetchUpdateSubdomain(formData) {
     return fetch(`${SERVER_URL}/api/subdomain/update`, {
         method: "PUT",
@@ -33,7 +31,9 @@ async function fetchUpdateSubdomain(formData) {
     });
 }
 
+// Function to toggle the update subdomain modal
 function toggleUpdateSubdomainModal() {
+    resetUpdateSubdomainForm();
     const updateSubdomainModalElement = document.getElementById(
         "updateSubdomainModal"
     );
@@ -43,28 +43,24 @@ function toggleUpdateSubdomainModal() {
     updateSubdomainModal.toggle();
 }
 
-function resetUpdateSubdomainForm() {
-    document.getElementById("updateSubdomainForm").reset();
+// Function to set the update modal title and input values
+function setUpdateModalTitleAndInputs(name, domain) {
+    document.getElementById("updateSubdomainModalLabel").innerHTML = name;
+    document.getElementById("prevSubdomainUpdateInput").value = name;
 }
 
-function setUpdateModalTitleAndInputs(name, domain) {
-    document.getElementById(
-        "updateSubdomainModalLabel"
-    ).innerHTML = `${name}.${domain}`;
-    document.getElementById("nameUpdateInput").value = name;
-    document.getElementById("domainUpdateInput").value = domain;
-    document.getElementById("prevSubdomainUpdateInput").value =
-        name.split(".")[0];
+// Function to reset the update subdomain form
+function resetUpdateSubdomainForm() {
+    document.getElementById("updateSubdomainForm").reset();
 }
 
 // event binding for update buttons
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("subdomain-update-button")) {
-        resetUpdateSubdomainForm();
+        toggleUpdateSubdomainModal();
         setUpdateModalTitleAndInputs(
             e.target.dataset.name,
             e.target.dataset.domain
         );
-        toggleUpdateSubdomainModal();
     }
 });

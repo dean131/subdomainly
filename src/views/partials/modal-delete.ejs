@@ -22,7 +22,7 @@
                 ></button>
             </div>
             <div class="modal-body">
-                <form id="deleteSubdomainForm">
+                <form id="deleteSubdomainForm" action="api/subdomain/delete">
                     <div class="mb-3">
                         <label for="securityCodeInput" class="form-label">
                             Security Code
@@ -48,9 +48,9 @@
                     Batal
                 </button>
                 <button
-                    type="button"
+                    type="submit"
+                    form="deleteSubdomainForm"
                     class="btn btn-danger"
-                    id="confirmDeleteButton"
                 >
                     Hapus
                 </button>
