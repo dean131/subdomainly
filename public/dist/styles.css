@@ -13150,17 +13150,16 @@ body {
     box-shadow: 0px 0px 0px rgba(0, 54, 128, 0);
   }
 }
+/* Footer Card Style */
 .footer-card {
   background: linear-gradient(135deg, #003680, #00204d);
   color: #f8f9fa;
-  /* Bootstrap light text color */
+  /* Light text color */
   border: none;
   border-radius: 0.4rem;
-  /* Reduced border radius */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   padding: 0.8rem;
-  /* Further reduced padding */
 }
 .footer-card:hover {
   transform: translateY(-3px);
@@ -13171,16 +13170,13 @@ body {
   background-color: #ffffff;
   color: #003680;
   padding: 0.2rem 0.6rem;
-  /* Further reduced padding */
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.2s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease;
   display: inline-flex;
   align-items: center;
   margin-top: 0.3rem;
-  /* Further reduced margin */
   margin-bottom: 0.3rem;
-  /* Further reduced margin */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 .btn-coffee:hover {
@@ -13192,35 +13188,30 @@ body {
 
 .coffee-icon {
   margin-right: 0.2rem;
-  /* Further reduced margin */
   font-size: 1rem;
-  /* Further reduced icon size */
 }
 
 .card-text {
   font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
-  /* Further reduced font size */
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  /* Further reduced gap */
+  gap: 1rem;
+  /* Adjusted gap for even spacing */
   margin-top: 0.3rem;
-  /* Further reduced margin */
 }
 .social-icons .social-icon {
   color: #f8f9fa;
-  /* Bootstrap light text color */
-  font-size: 1rem;
-  /* Further reduced icon size */
+  font-size: 1.5rem;
+  /* Adjusted icon size */
   transition: color 0.2s ease, transform 0.2s ease-in-out;
 }
 .social-icons .social-icon:hover {
   color: white;
-  transform: scale(1.05);
+  transform: scale(1.1);
   /* Slightly smaller hover effect */
 }
 

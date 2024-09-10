@@ -198,15 +198,15 @@ body {
         box-shadow: 0px 0px 0px rgba($primary, 0);
     }
 }
-
+/* Footer Card Style */
 .footer-card {
     background: linear-gradient(135deg, $primary, darken($primary, 10%));
-    color: #f8f9fa; /* Bootstrap light text color */
+    color: #f8f9fa; /* Light text color */
     border: none;
-    border-radius: 0.4rem; /* Reduced border radius */
+    border-radius: 0.4rem;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    padding: 0.8rem; /* Further reduced padding */
+    padding: 0.8rem;
 
     &:hover {
         transform: translateY(-3px);
@@ -217,15 +217,15 @@ body {
 .btn-coffee {
     background-color: $secondary;
     color: $primary;
-    padding: 0.2rem 0.6rem; /* Further reduced padding */
+    padding: 0.2rem 0.6rem;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.2s ease, transform 0.2s ease-in-out,
         box-shadow 0.2s ease;
     display: inline-flex;
     align-items: center;
-    margin-top: 0.3rem; /* Further reduced margin */
-    margin-bottom: 0.3rem; /* Further reduced margin */
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 
     &:hover {
@@ -237,29 +237,29 @@ body {
 }
 
 .coffee-icon {
-    margin-right: 0.2rem; /* Further reduced margin */
-    font-size: 1rem; /* Further reduced icon size */
+    margin-right: 0.2rem;
+    font-size: 1rem;
 }
 
 .card-text {
     font-family: "Roboto", sans-serif;
-    font-size: 0.9rem; /* Further reduced font size */
+    font-size: 0.9rem;
 }
 
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 0.5rem; /* Further reduced gap */
-    margin-top: 0.3rem; /* Further reduced margin */
+    gap: 1rem; /* Adjusted gap for even spacing */
+    margin-top: 0.3rem;
 
     .social-icon {
-        color: #f8f9fa; /* Bootstrap light text color */
-        font-size: 1rem; /* Further reduced icon size */
+        color: #f8f9fa;
+        font-size: 1.5rem; /* Adjusted icon size */
         transition: color 0.2s ease, transform 0.2s ease-in-out;
 
         &:hover {
             color: lighten(#f8f9fa, 20%);
-            transform: scale(1.05); /* Slightly smaller hover effect */
+            transform: scale(1.1); /* Slightly smaller hover effect */
         }
     }
 }
