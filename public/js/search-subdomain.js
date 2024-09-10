@@ -46,6 +46,10 @@ async function searchSubdomain() {
         displaySearchError("Silakan masukkan subdomain yang ingin dicari.");
         return;
     }
+
+    // Show the loading spinner
+    document.getElementById("loadingSpinner").hidden = false;
+
     try {
         const response = await fetchSubdomainData(subdomain);
         const data = await response.json();
@@ -62,6 +66,9 @@ async function searchSubdomain() {
         }
     } catch (error) {
         makeAlert(`Error: ${error.message}`, "danger");
+    } finally {
+        // Hide the loading spinner
+        document.getElementById("loadingSpinner").hidden = true;
     }
 }
 

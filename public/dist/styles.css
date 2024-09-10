@@ -13041,6 +13041,14 @@ body {
   background: linear-gradient(135deg, #003c8f, #004cb3);
 }
 
+#loadingSpinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
 #subdomain-search-input {
   border: 2px solid #003680;
   border-radius: 5px;
