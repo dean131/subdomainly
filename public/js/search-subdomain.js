@@ -152,5 +152,6 @@ function toggleSearchResultContainer() {
     const searchResultContainer = document.getElementById(
         "subdomainsSearcehResultContainer"
     );
-    searchResultContainer.hidden = !searchResultContainer.hidden;
+    console.log(searchResultContainer.hidden);
+    // searchResultContainer.hidden = !searchResultContainer.hidden;
 }
