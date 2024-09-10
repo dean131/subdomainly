@@ -52,7 +52,7 @@ async function searchSubdomain() {
         if (data.success) {
             if (data.data.length > 0) {
                 displaySubdomainSearchResults(data.data);
-                showSearchResultContainer();
+                toggleSearchResultContainer;
             } else {
                 makeAlert("Subdomain tidak ditemukan.", "warning");
             }
@@ -147,7 +147,10 @@ function createAvailableSubdomainHtml(item) {
     return `<h5 class="col-md-auto mb-2"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
 }
 
-// Function to show the search result container
-function showSearchResultContainer() {
-    document.getElementById("subdomainsContainer").hidden = false;
+// // Function to toggle the search result container
+function toggleSearchResultContainer() {
+    const searchResultContainer = document.getElementById(
+        "subdomainsSearcehResultContainer"
+    );
+    searchResultContainer.hidden = !searchResultContainer.hidden;
 }
