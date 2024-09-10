@@ -29,9 +29,9 @@ function handleSearchInput(event) {
 
 // Function to clear previous search results and errors
 function clearPreviousSearchResults() {
-    toggleSearchResultContainer();
     document.getElementById("searchError").innerHTML = "";
     document.getElementById("result-list").innerHTML = "";
+    toggleSearchResultContainer();
 }
 
 // Function to display search error messages
