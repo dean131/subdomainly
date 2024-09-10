@@ -52,7 +52,7 @@ async function searchSubdomain() {
         if (data.success) {
             if (data.data.length > 0) {
                 displaySubdomainSearchResults(data.data);
-                toggleSearchResultContainer;
+                toggleSearchResultContainer();
             } else {
                 makeAlert("Subdomain tidak ditemukan.", "warning");
             }
