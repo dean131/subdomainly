@@ -79,66 +79,6 @@ function setupCopyButton(copyButton, securityCodeInput) {
     });
 }
 
-// Function to create a subdomain list item
-function createSubdomainListItem(item) {
-    const listItem = document.createElement("a");
-    listItem.className = "list-group-item list-group-item-action";
-
-    const buttonHtml =
-        item.status === "taken"
-            ? createUnavailableButton()
-            : createAvailableButton(item);
-
-    const subdomainHtml =
-        item.status === "taken"
-            ? createUnavailableSubdomainHtml(item)
-            : createAvailableSubdomainHtml(item);
-
-    listItem.innerHTML = `
-        <div class="row align-items-center justify-content-between">
-            ${subdomainHtml}
-            ${buttonHtml}
-        </div>
-    `;
-    return listItem;
-}
-
-// Function to create unavailable button HTML
-function createUnavailableButton() {
-    return `
-        <button
-            type="button"
-            class="btn btn-outline-danger col-md-auto"
-            disabled>
-                Tidak Tersedia
-        </button>
-    `;
-}
-
-// Function to create available button HTML
-function createAvailableButton(item) {
-    return `
-        <button
-            type="button"
-            class="btn btn-outline-primary btn-create-subdomain col-md-auto"
-
-            data-domain="${item.domain}"
-            data-subdomain="${item.subdomain}">
-                Pilih Subdomain
-        </button>
-    `;
-}
-
-// Function to create unavailable subdomain HTML
-function createUnavailableSubdomainHtml(item) {
-    return `<h5 class="col-md-auto text-decoration-line-through mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
-}
-
-// Function to create available subdomain HTML
-function createAvailableSubdomainHtml(item) {
-    return `<h5 class="col-md-auto mb-1"><strong>${item.subdomain}</strong>.${item.domain}</h5>`;
-}
-
 // Function to give event to create buttons
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("btn-create-subdomain")) {
