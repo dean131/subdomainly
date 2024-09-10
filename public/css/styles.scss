@@ -18,6 +18,27 @@ body {
     padding: 0;
 }
 
+// Custom alert styles
+.custom-alert {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 // Navbar styles
 .navbar {
     background-color: $primary;
@@ -98,17 +119,3 @@ body {
         border-color: $accent;
     }
 }
-
-// // Modal styles
-// .modal-header {
-//     background-color: $primary;
-//     color: $secondary;
-// }
-
-// .modal-footer {
-//     background-color: lighten($primary, 20%);
-// }
-
-// .modal-content {
-//     border-radius: 10px;
-// }

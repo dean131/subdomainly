@@ -54,13 +54,13 @@ async function searchSubdomain() {
                 displaySubdomainSearchResults(data.data);
                 showSearchResultContainer();
             } else {
-                displaySearchError("Subdomain tidak tersedia.");
+                makeAlert("Subdomain tidak ditemukan.");
             }
         } else {
-            displaySearchError(data.message);
+            makeAlert(data.message);
         }
     } catch (error) {
-        displaySearchError(`Error: ${error.message}`);
+        makeAlert(`Error: ${error.message}`);
     }
 }
 

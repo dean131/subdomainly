@@ -107,10 +107,20 @@ function renderSubdomainList(subdomainList) {
     container.innerHTML = "";
 
     if (subdomainList.length === 0) {
-        container.innerHTML = makeAlert("Belum ada subdomain yang terdaftar.");
+        container.innerHTML = noSubdomainCreatedCard();
     } else {
         container.innerHTML = subdomainList.map(createSubdomainCard).join("");
     }
+}
+
+function noSubdomainCreatedCard() {
+    return /*html*/ `
+        <div class="col-12">
+            <div class="alert alert-primay" role="alert">
+                Belum ada subdomain yang dibuat.
+            </div>
+        </div>
+    `;
 }
 
 function createSubdomainCard(item) {
