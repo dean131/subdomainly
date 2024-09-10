@@ -4,9 +4,9 @@ document
     .addEventListener("submit", async function (e) {
         e.preventDefault();
         const formData = new FormData(this);
-        console.log(formData);
         const response = await fetchCreateSubdomain(formData);
         const data = await response.json();
+        console.log(data);
         if (data.success && data.data.securityCode) {
             toggleCreateSubdomainModal();
             showSecurityCodeModal(data.data.securityCode);
