@@ -11,6 +11,8 @@ document
                 makeAlert("Subdomain berhasil diperbarui.", "primary");
                 toggleUpdateSubdomainModal();
                 // Optionally, refresh the subdomain list or perform other UI updates
+                toggleSearchResultContainer();
+                clearPreviousSearchResults();
                 fetchSubdomainList();
             } else {
                 makeAlert(data.message, "danger");
