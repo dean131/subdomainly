@@ -13,6 +13,7 @@ document
             // Optionally, refresh the subdomain list or perform other UI updates
             fetchSubdomainList();
             clearPreviousSearchResults();
+            makeAlert("Subdomain berhasil dibuat.", "success");
         } else {
             makeAlert(data.message, "danger");
         }
@@ -84,8 +85,6 @@ function setupCopyButton(copyButton, securityCodeInput) {
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("btn-create-subdomain")) {
         toggleCreateSubdomainModal();
-        console.log(e.target.dataset.domain);
-        console.log(e.target.dataset.subdomain);
         setCreateModalTitleAndInputs(
             e.target.dataset.subdomain,
             e.target.dataset.domain
