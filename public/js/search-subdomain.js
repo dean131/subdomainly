@@ -31,7 +31,6 @@ function handleSearchInput(event) {
 function clearPreviousSearchResults() {
     document.getElementById("searchError").innerHTML = "";
     document.getElementById("result-list").innerHTML = "";
-    toggleSearchResultContainer();
 }
 
 // Function to display search error messages
@@ -42,7 +41,6 @@ function displaySearchError(message) {
 // Function to fetch subdomain search results from the server
 async function searchSubdomain() {
     const subdomain = document.getElementById("subdomain-search-input").value;
-    clearPreviousSearchResults();
     if (!subdomain) {
         displaySearchError("Silakan masukkan subdomain yang ingin dicari.");
         return;
@@ -52,6 +50,7 @@ async function searchSubdomain() {
         const data = await response.json();
         if (data.success) {
             if (data.data.length > 0) {
+                clearPreviousSearchResults();
                 displaySubdomainSearchResults(data.data);
                 toggleSearchResultContainer();
             } else {
