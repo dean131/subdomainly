@@ -14,7 +14,7 @@ document
             fetchSubdomainList();
             clearPreviousSearchResults();
         } else {
-            alert("Failed to create subdomain.");
+            makeAlert(data.message, "danger");
         }
     });
 

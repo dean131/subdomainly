@@ -8,15 +8,15 @@ document
             const response = await fetchUpdateSubdomain(formData);
             const data = await response.json();
             if (data.success) {
-                alert("Subdomain updated successfully.");
+                shwoAlert("Subdomain berhasil diperbarui.", "success");
                 toggleUpdateSubdomainModal();
                 // Optionally, refresh the subdomain list or perform other UI updates
                 fetchSubdomainList();
             } else {
-                alert(`Error: ${data.message}`);
+                showAlert(data.message, "danger");
             }
         } catch (error) {
-            alert(`Error: ${error.message}`);
+            showAlert(`Error: ${error.message}`, "danger");
         }
     });
 

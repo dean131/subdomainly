@@ -5,6 +5,10 @@ $accent: #008080; // Teal color for interactions
 $background: #f0f0f0; // Light gray for backgrounds
 $text-primary: #333333;
 $text-secondary: #666666;
+$danger: #dc3545; // Red for danger alerts
+$warning: #ffc107; // Yellow for warning alerts
+$success: #28a745; // Green for success alerts
+$info: #17a2b8; // Teal for info alerts
 
 // Import Bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap";
@@ -106,11 +110,6 @@ body {
     justify-content: space-between; // Ensures the button is on the far right
     padding: 1.5rem;
     border-radius: 0.75rem;
-    background: linear-gradient(
-        135deg,
-        $primary,
-        lighten($primary, 15%)
-    ); // Blue gradient
     color: $secondary;
     font-weight: 500;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
@@ -127,6 +126,39 @@ body {
     &:hover {
         transform: scale(1.05);
         box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    &.alert-success {
+        background: linear-gradient(
+            135deg,
+            $success,
+            lighten($success, 15%)
+        ); // Green gradient
+    }
+
+    &.alert-danger {
+        background: linear-gradient(
+            135deg,
+            $danger,
+            lighten($danger, 15%)
+        ); // Red gradient
+    }
+
+    &.alert-warning {
+        background: linear-gradient(
+            135deg,
+            $warning,
+            lighten($warning, 15%)
+        ); // Yellow gradient
+        color: $text-primary; // Dark text for better contrast
+    }
+
+    &.alert-info {
+        background: linear-gradient(
+            135deg,
+            $info,
+            lighten($info, 15%)
+        ); // Teal gradient
     }
 }
 
