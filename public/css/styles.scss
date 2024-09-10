@@ -18,27 +18,6 @@ body {
     padding: 0;
 }
 
-// Custom alert styles
-.custom-alert {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 // Navbar styles
 .navbar {
     background-color: $primary;
@@ -117,5 +96,76 @@ body {
     &:hover {
         background-color: lighten($secondary, 10%);
         border-color: $accent;
+    }
+}
+
+// Custom alert styles with floating position and adjusted button
+.custom-alert {
+    display: flex;
+    align-items: center; // Ensures vertical centering of all elements
+    justify-content: space-between; // Ensures the button is on the far right
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(
+        135deg,
+        $primary,
+        lighten($primary, 15%)
+    ); // Blue gradient
+    color: $secondary;
+    font-weight: 500;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.5s ease-in-out, slideIn 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: none;
+
+    // Positioning to float
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; // Keep above other elements
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// Updated custom close button styles
+.custom-close-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: $secondary;
+    cursor: pointer;
+    align-self: center; // Ensure vertical centering of the button
+    margin-left: auto; // Push the button to the far right
+    &:hover {
+        color: lighten($primary, 15%);
+    }
+}
+
+// Icon styles for success, info, and danger alerts
+.alert-icon {
+    margin-right: 0.75rem;
+    font-size: 1.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
     }
 }
