@@ -13031,6 +13031,16 @@ body {
   border-color: #e6e6e6;
 }
 
+.subdomain-card-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 54, 128, 0.2), 0 6px 20px rgba(0, 128, 255, 0.2);
+  /* Light blue shadow */
+}
+
+.dropdown-item:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, #003c8f, #004cb3);
+}
+
 #subdomain-search-input {
   border: 2px solid #003680;
   border-radius: 5px;

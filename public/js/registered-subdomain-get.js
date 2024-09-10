@@ -126,7 +126,7 @@ function noSubdomainCreatedCard() {
 function createSubdomainCard(item) {
     return /*html*/ `
         <div class="col-12 col-md-6 mb-3">
-            <div class="card">
+            <div class="card subdomain-card-item">
                 <div class="card-body">
                     <div class="input-group mb-1">
                         <input type="text" class="form-control font-monospace fw-semibold" value="${item.name}" readonly>
