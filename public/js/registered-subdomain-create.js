@@ -33,9 +33,7 @@ async function fetchCreateSubdomain(formData) {
 // Function to toggle the create subdomain modal
 function toggleCreateSubdomainModal(action = "toggle") {
     resetCreateSubdomainForm();
-    const createSubdomainModalElement = document.getElementById(
-        "createSubdomainModal"
-    );
+    const createSubdomainModalElement = document.getElementById("modalCreate");
     const createSubdomainModal =
         bootstrap.Modal.getInstance(createSubdomainModalElement) ||
         new bootstrap.Modal(createSubdomainModalElement);
