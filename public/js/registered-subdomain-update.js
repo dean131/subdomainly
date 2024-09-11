@@ -9,7 +9,7 @@ document
             const data = await response.json();
             if (data.success) {
                 makeAlert("Subdomain berhasil diperbarui.", "primary");
-                toggleUpdateSubdomainModal();
+                toggleUpdateSubdomainModal("hide");
                 // Optionally, refresh the subdomain list or perform other UI updates
                 toggleSearchResultContainer("hide");
                 clearPreviousSearchResults();
@@ -34,7 +34,7 @@ async function fetchUpdateSubdomain(formData) {
 }
 
 // Function to toggle the update subdomain modal
-function toggleUpdateSubdomainModal() {
+function toggleUpdateSubdomainModal(action = "toggle") {
     resetUpdateSubdomainForm();
     const updateSubdomainModalElement = document.getElementById(
         "updateSubdomainModal"
@@ -42,7 +42,13 @@ function toggleUpdateSubdomainModal() {
     const updateSubdomainModal =
         bootstrap.Modal.getInstance(updateSubdomainModalElement) ||
         new bootstrap.Modal(updateSubdomainModalElement);
-    updateSubdomainModal.toggle();
+    if (action === "show") {
+        updateSubdomainModal.show();
+    } else if (action === "hide") {
+        updateSubdomainModal.hide();
+    } else {
+        updateSubdomainModal.toggle();
+    }
 }
 
 // Function to set the update modal title and input values
@@ -59,7 +65,7 @@ function resetUpdateSubdomainForm() {
 // event binding for update buttons
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("subdomain-update-button")) {
-        toggleUpdateSubdomainModal();
+        toggleUpdateSubdomainModal("show");
         setUpdateModalTitleAndInputs(
             e.target.dataset.name,
             e.target.dataset.domain
