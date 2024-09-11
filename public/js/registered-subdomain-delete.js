@@ -9,7 +9,7 @@ document
             const data = await response.json();
             if (data.success) {
                 makeAlert("Subdomain berhasil dihapus.", "prymary");
-                toggleDeleteSubdomainModal();
+                toggleDeleteSubdomainModal("hide");
                 // Optionally, refresh the subdomain list or perform other UI updates
                 toggleSearchResultContainer("hide");
                 clearPreviousSearchResults();
@@ -68,7 +68,7 @@ function setDeleteModalTitleAndInputs(subdomain) {
 // Add event listener to delete subdomain buttons
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("subdomain-delete-button")) {
-        toggleDeleteSubdomainModal();
+        toggleDeleteSubdomainModal("show");
         setDeleteModalTitleAndInputs(e.target.dataset.name);
     }
 });

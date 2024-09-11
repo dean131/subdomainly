@@ -49,6 +49,7 @@ async function searchSubdomain() {
 
     document.getElementById("loader").hidden = false;
     clearPreviousSearchResults();
+    toggleSearchResultContainer("hide");
 
     try {
         const response = await fetchSubdomainData(subdomain);
