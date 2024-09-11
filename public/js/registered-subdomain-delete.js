@@ -34,7 +34,7 @@ async function fetchDeleteSubdomain(formData) {
 }
 
 // Function to toggle the delete subdomain modal
-function toggleDeleteSubdomainModal() {
+function toggleDeleteSubdomainModal(action = "toggle") {
     resetDeleteSubdomainForm();
     const deleteSubdomainModalElement = document.getElementById(
         "modalDeleteSubdomain"
@@ -43,7 +43,13 @@ function toggleDeleteSubdomainModal() {
     const deleteSubdomainModal =
         bootstrap.Modal.getInstance(deleteSubdomainModalElement) ||
         new bootstrap.Modal(deleteSubdomainModalElement);
-    deleteSubdomainModal.toggle();
+    if (action === "show") {
+        deleteSubdomainModal.show();
+    } else if (action === "hide") {
+        deleteSubdomainModal.hide();
+    } else {
+        deleteSubdomainModal.toggle();
+    }
 }
 
 // Function to reset the delete subdomain form

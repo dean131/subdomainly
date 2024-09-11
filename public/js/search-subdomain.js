@@ -48,13 +48,13 @@ async function searchSubdomain() {
     }
 
     document.getElementById("loader").hidden = false;
+    clearPreviousSearchResults();
 
     try {
         const response = await fetchSubdomainData(subdomain);
         const data = await response.json();
         if (data.success) {
             if (data.data.length > 0) {
-                clearPreviousSearchResults();
                 displaySubdomainSearchResults(data.data);
                 toggleSearchResultContainer("show");
             } else {
