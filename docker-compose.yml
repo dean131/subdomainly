@@ -2,10 +2,12 @@ services:
   subdomainly-app:
     container_name: subdomainly-app
     restart: always
-    build: .
     volumes:
-      - .:/app
-      - /app/node_modules
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./views:/app/views
+      
+
 
 
 

@@ -1,6 +1,9 @@
 const index = async (req, res, next) => {
     try {
-        res.render("index", { title: "Subdomain Search" });
+        res.render("index", {
+            layout: "layouts/base",
+            title: "Subdomain Search",
+        });
     } catch (error) {
         return next(error);
     }

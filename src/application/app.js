@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", "src/views");
 app.use(expressEjsLayouts);
-app.set("layout", "layouts/base");
+// app.set("layout", "layouts/base");
 
 app.use("/", subdomainRouter);
 
