@@ -68,7 +68,7 @@ async function searchSubdomain() {
         makeAlert(`Error: ${error.message}`, "danger");
     } finally {
         document.getElementById("loader").hidden = true;
-        // turnstile.reset();
+        turnstile.reset();
     }
 }
 
