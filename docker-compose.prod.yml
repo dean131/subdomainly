@@ -6,7 +6,7 @@ services:
     env_file:
       - .env.prod
     networks:
-      - nginx-proxy-manager_default
+      - npm_networks
 
 networks:
   nginx-proxy-manager_default:
