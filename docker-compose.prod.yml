@@ -9,5 +9,4 @@ services:
       - npm_networks
 
 networks:
-  nginx-proxy-manager_default:
-    external: true
+  npm_networks:
